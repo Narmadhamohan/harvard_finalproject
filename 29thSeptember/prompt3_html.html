@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Bulk Import Setup Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f7f9fc;
+            color: #222;
+            line-height: 1.6;
+            padding: 40px;
+        }
+        h1, h2, h3 {
+            color: #0066cc;
+        }
+        pre, code {
+            background: #eee;
+            padding: 10px;
+            border-radius: 8px;
+            display: block;
+            overflow-x: auto;
+        }
+        section {
+            background: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 8px rgba(0,0,0,0.1);
+        }
+        .note {
+            background: #e8f4fc;
+            border-left: 4px solid #007acc;
+            padding: 10px 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🚀 Django Project Setup + Bulk Import Guide</h1>
+<p><strong>Author:</strong> Narmadha Mohan</p>
+<p><strong>Goal:</strong> Import data in bulk and start developing app features efficiently.</p>
+
+<section>
+    <h2>⚙️ STEP 1 — Create Project & App</h2>
+    <pre><code># 1️⃣ Create a project folder
+mkdir trainer_app
+cd trainer_app
+
+# 2️⃣ Create virtual environment
+python -m venv venv
+
+# Activate it:
+# On Windows:
+venv\Scripts\activate
+# On Mac/Linux:
+source venv/bin/activate
+
+# 3️⃣ Install Django + Django REST Framework
+pip install django djangorestframework
+
+# 4️⃣ Create Django project
+django-admin startproject core .
+
+# 5️⃣ Create an app
+python manage.py startapp users
+</code></pre>
+    <div class="note">
+        ✅ You now have the structure:<br>
+        trainer_app/ → core/, users/, manage.py, venv/
+    </div>
+</section>
+
+<section>
+    <h2>🧩 STEP 2 — Add App & REST Framework to Settings</h2>
+    <p>Open <code>core/settings.py</code> and add:</p>
+    <pre><code>INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+
+    # Add these 👇
+    'rest_framework',
+    'users',
+]
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+AUTH_USER_MODEL = 'users.User'
+</code></pre>
+</section>
+
+<section>
+    <h2>🧱 STEP 3 — Place Your Models</h2>
+    <p>Paste this into <code>users/models.py</code>:</p>
+    <pre><code>from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+class User(AbstractUser):
+    email = models.EmailField(unique=True)
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
+
+    def __str__(self):
+        return self.email
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    skills = models.TextField(blank=True)
+    education = models.TextField(blank=True)
+    experience = models.TextField(blank=True)
+    location = models.CharField(max_length=150, blank=True)
+    full_name = models.CharField(max_length=200, blank=True)
+    preferred_mode = models.CharField(max_length=200, blank=True)
+
+class Resume(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    file = models.FileField(upload_to='resumes/')
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+</code></pre>
+</section>
+
+<section>
+    <h2>🧱 STEP 4 — Make Database Migrations</h2>
+    <pre><code>python manage.py makemigrations
+python manage.py migrate
+</code></pre>
+</section>
+
+<section>
+    <h2>👑 STEP 5 — Create Admin Superuser</h2>
+    <pre><code>python manage.py createsuperuser</code></pre>
+    <p>➡ Access Django admin: <strong>http://127.0.0.1:8000/admin/</strong></p>
+</section>
+
+<section>
+    <h2>📥 STEP 6 — Add Bulk Import Command</h2>
+    <p>Create folder structure:</p>
+    <pre><code>users/
+├── management/
+│   └── commands/
+│       └── import_profiles.py
+</code></pre>
+
+    <p>Paste this into <code>import_profiles.py</code>:</p>
+    <pre><code>from django.core.management.base import BaseCommand
+import csv
+from users.models import User, Profile
+
+class Command(BaseCommand):
+    help = 'Import profiles in bulk from a CSV file'
+
+    def add_arguments(self, parser):
+        parser.add_argument('csv_file', type=str, help='Path to the CSV file')
+
+    def handle(self, *args, **kwargs):
+        csv_file = kwargs['csv_file']
+        with open(csv_file, newline='', encoding='utf-8') as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                email = row['email']
+                username = row['username']
+
+                user, created = User.objects.get_or_create(
+                    email=email,
+                    defaults={'username': username}
+                )
+
+                Profile.objects.update_or_create(
+                    user=user,
+                    defaults={
+                        'skills': row['skills'],
+                        'education': row['education'],
+                        'experience': row['experience'],
+                        'location': row['location'],
+                        'full_name': row['full_name'],
+                        'preferred_mode': row['preferred_mode']
+                    }
+                )
+
+        self.stdout.write(self.style.SUCCESS('✅ Bulk profiles imported successfully!'))
+</code></pre>
+</section>
+
+<section>
+    <h2>📊 STEP 7 — Add Sample CSV Data</h2>
+    <p>Create folder <code>data/</code> → <code>profiles_bulk.csv</code>:</p>
+    <pre><code>email,username,skills,education,experience,location,full_name,preferred_mode
+narmi@example.com,Narmi123,"Python, Django","MSc Computer Science","5 years teaching","Chennai","Narmadha Mohan","Online"
+arun@example.com,ArunK,"React, JavaScript","BE Computer Science","3 years trainer","Coimbatore","Arun Kumar","Offline"
+lakshmi@example.com,Lakshmi12,"SQL, Data Analysis","MBA","4 years Analyst","Madurai","Lakshmi Devi","Online"
+</code></pre>
+</section>
+
+<section>
+    <h2>🧠 STEP 8 — Run Server & Import Command</h2>
+    <pre><code># Run development server
+python manage.py runserver
+
+# In another terminal tab
+python manage.py import_profiles data/profiles_bulk.csv
+</code></pre>
+
+    <div class="note">✅ Output: Bulk profiles imported successfully!</div>
+    <p>Check imported data in Django Admin → Profiles.</p>
+</section>
+
+<section>
+    <h2>🚀 STEP 9 — Next Development Steps</h2>
+    <ul>
+        <li>🔍 Search/filter profiles by skill/location</li>
+        <li>📤 Resume upload with profile link</li>
+        <li>📈 Dashboard summary (Online vs Offline trainers)</li>
+        <li>📦 API endpoints for React frontend</li>
+    </ul>
+</section>
+
+<footer style="margin-top:40px; font-size:0.9em; text-align:center; color:#666;">
+    <p>Made with 💙 by <strong>Narmadha Mohan</strong> — Django AI Learning Series</p>
+</footer>
+
+</body>
+</html>

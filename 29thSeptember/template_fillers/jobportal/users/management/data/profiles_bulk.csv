@@ -1,0 +1,4 @@
+email,username,skills,education,experience,location,full_name,preferred_mode
+narmi@example.com,Narmi123,"Python, Django","MSc Computer Science","5 years teaching","Chennai","Narmadha Mohan","Online"
+arun@example.com,ArunK,"React, JavaScript","BE Computer Science","3 years trainer","Coimbatore","Arun Kumar","Offline"
+lakshmi@example.com,Lakshmi12,"SQL, Data Analysis","MBA","4 years Analyst","Madurai","Lakshmi Devi","Online"

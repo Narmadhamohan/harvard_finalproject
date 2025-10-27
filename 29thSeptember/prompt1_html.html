@@ -1,0 +1,286 @@
+<! DOCTYPE html>
+
+<head>
+	<title> Project - Features plan </title>
+</head>
+<body>
+
+
+
+
+	<div> <b> Crucial first step  - Planning the features </b> </div>
+	<ol>
+		<li>1.Planning the features</li>
+		<li>2.Check the sprint plan</li>
+		<li>3. Create test data and testing methods </li>
+		<li>4.create initial harvard type - project type template fillers</li>
+		<li>5.Then create the connections of API and test with postman</li>
+		<li>6.Implement it in the projects with React API connecting front end and middle and backend</li>
+	</ol>
+	
+		<div> <b> Version 2 </b> </div>
+	<ol>
+		<li>1.Planning the features - bulk load and category wise split. Last - individual registration</li>
+		<li>2.Sprit plan may work for team and time estimates tracking</li>
+		<li>3. Bulk load and category wise split - make the project easily understandable. Use terminals to check using different queries.
+		Use with Postman client. </li>
+		<li>create known replica simple data with tables to understand about table features.</li>
+		<li>4.create initial harvard type - project type template fillers</li>
+		<li>5.Then create the connections of API and test with postman</li>
+		<li>6.Implement it in the projects with React API connecting front end and middle and backend</li>
+	</ol>
+	
+	
+<a href="#1">1.Planning the features</a>	
+<a href="#5">2.Check the sprint plan - outdated - not a way for learning indiviudal - only for time tracking and team work</a>	
+<a href="#3"> 3.Create test data and testing methods </a>
+<a href="#4">4. create initial harvard type - project type template fillers </a>
+
+<div id=5>
+<h1>Category wise work</h1>
+<ol>
+<li>
+1. Do project setup - get jwt, Post man client import schema files - autogenerate.
+
+Case A: To understand about data 
+Bulk upload sample data for users, job posts
+</li>
+<li>
+Case B: View Job, View user
+</li>
+<li>
+Case C: Apply job, send mail to trainers
+</li>
+<li>
+Case D: Search job post with filters, search trainers with keywords
+</li>
+<li>
+Case E: view applied jobs, view jobs, view applied candidates
+</li>
+<li>
+Case F: New user reg, new job post
+</li>
+<li>
+case G: DB:
+
+1. Understand about user reg
+2. DB queries
+</li>
+<li>
+Case C: Only API setup - Postman
+</li>
+<li>
+Case D: Front end setup
+
+</li>
+</ol>
+
+</div>
+
+<hint>Alwaays - use db code as like chatgpt contination - conversation</hint>
+
+<div id=4>
+<p> I'm going to use below propmpt to get the project type template fillers </p>
+
+<p> prompts: 1. For the new job posting plan, help with python , django and 
+react based iniital test data for API - Job features - Signup,
+./Login (email), Create and update profile (resume, skills, education, experience), Upload multiple resumes/cover letters),
+
+2.give only as api end points design and test input for them  
+3.how to manage this api desing with test data with the latest technology
+4.how in swagger i can add the above api endpoints and manage with test data collection save. give step by step -- not useful or not used
+5.give that in tamil
+6. i dont have url patterns. i have only sprint topic features for which we need api end points as a first step using swagger,
+7.Give the python django code for each of these API designs one by one to test with above post man client imported.
+</p>
+<code>django-admin startproject jobportal
+cd jobportal
+python manage.py startapp users
+pip install djangorestframework drf-yasg
+
+server startup:
+rm db.sqlite3
+rm -r users/migrations
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+
+</code>
+</div>
+<div>
+After bulk upload of data:
+CREATE USER 'contractTrainer'@'localhost' IDENTIFIED BY 'abc12def';
+CREATE DATABASE trainer_db;
+GRANT ALL PRIVILEGES ON trainer_db.* TO 'contractTrainer'@'localhost';
+FLUSH PRIVILEGES;
+;
+
+Then change setting.py db engine
+;
+then install particular db engine using pip
+
+
+then - signup and access checking
+permission_classes=[permissions.AllowAny] in url path
+
+
+view.py - signup + login set class ondru than. issues nala, pesama, seperate signup serializers created, becuase bulk has nested serializer
+epudi auto-detect, - says user already exists?
+<div>
+
+<div id=3>
+<header2> Create test data </header2>
+
+</div>
+	
+<div id=2>
+<header1>Check the sprint plan</header1>
+<div> Epic 1: Common steps: Sprint 1: 2 days - Create test data - rolling ball between front end and backend and testing methods
+		<p>Create test data for Job: Account , Profile - for backend, database.</p>
+				<p>Create test data for Job: Account , Profile - for backend, database.</p>
+		<p>Create test data for Job: Account , Profile - for backend, database.</p>
+
+</div>
+	
+<div> Epic 1: Job speaker features: Sprint 1: 2 days - Account & Profile, 2 days - Employee to view the profiles</div>
+<div> Epic 2: Employer Features: Sprint 2:  2 days - Employee & Account profile</div>
+<div> Epic 3: Job Speaker Features: Sprint 3: 2 days - Job search & Apply</div>
+<div> Epic 4: Employer Features: sprint 4: 2days - Job Posting</div>
+<div> Epic 5: Applicant Management: sprint 5: 3 days - View applicants</div>
+
+</div>
+	
+	
+	
+<a href="#1"></a>
+<div id="1">	
+	<textarea> Give me a plan for job posting website features: 
+ChatGPT said:
+
+Got it 👍 You want a plan of features for a Job Posting Website. I’ll break it down into core features, advanced features, and admin/employer/jobseeker perspectives so you can see the full picture.
+</textarea>
+
+<div>
+
+🚀 Job Posting Website Features Plan
+<hr>
+1. User Roles
+<hr>
+<ul>
+<li>
+Job Seekers – Browse and apply for jobs.
+</li>
+<li>
+Employers/Recruiters – Post jobs, manage applications.
+</li>
+<li>
+Admin – Monitor, approve, manage users, ensure compliance.
+</li>
+
+
+</ul>
+<hr>
+2. Job Seeker Features
+<hr>
+Account & Profile
+
+<ul>
+<li>Signup/Login (email, Google, LinkedIn)</li>
+
+<li>Create and update profile (resume, skills, education, experience)</li>
+
+<li>Upload multiple resumes/cover letters</li>
+</ul>
+Job Search & Apply
+<ul>
+<li>Search jobs by title, skills, company, location</li>
+
+<li>Advanced filters (experience level, salary range, job type)</li>
+
+<li>Save jobs for later</li>
+
+<li>Apply directly with resume or via LinkedIn/third-party</li>
+
+</ul>
+<hr>
+</div>
+
+<div>
+<ul>
+
+<li> <b> 3. Employer Features </b></li>
+
+Account & Company Profile:
+
+<li>Employer registration & verification</li>
+
+<li>Create/manage company profile with branding/logo</li>
+
+<li>Post unlimited jobs (or based on plan)</li>
+</ul>
+
+<ul>
+
+Job Posting:
+
+<li>Easy job posting form (title, description, skills, salary, location, job type)</li>
+
+<li>Option to feature/promote job postings</li>
+
+<li>Clone/reuse past job posts</li>
+
+</ul>
+
+<ul>
+Applicant Management:
+
+<li>View applicant list (resume + cover letter + profile)</li>
+
+<li>Filter/sort applicants by skill, experience, etc.</li>
+
+<li>Contact applicants directly</li>
+
+<li>Download applicant resumes</li>
+
+<li>Status updates (shortlist, reject, interview)</li>
+</ul>
+</div>
+
+
+
+<div>
+
+<b>Tech & UX Considerations</b>
+
+<ul>
+<li>Frontend: React/Angular/Vue (modern UI with filters, job cards, dashboards)</li>
+
+<li>Backend: Django/Spring Boot/Node.js (secure APIs, authentication, role-based access)</li>
+
+<li>Database: PostgreSQL/MySQL (scalable job & user data storage)</li>
+
+<li>Search & Filters: Elasticsearch for fast search</li>
+
+<li>Security: JWT authentication, SSL encryption</li>
+
+<li>Deployment: Cloud (AWS/GCP/Azure), Docker for scalability</li>
+</ul>
+</div>
+
+<div>
+
+
+✅ Summary Flow:
+<ul>
+<li>Job Seeker → creates profile → browses & applies → tracks applications.</li>
+
+<li>Employer → posts jobs → manages applicants → shortlists/interviews → hires.</li>
+
+<li>Admin → monitors system → ensures trust → manages revenue.</li>
+</ul>
+</div>
+</div>
+
+</body>
+
+<html>

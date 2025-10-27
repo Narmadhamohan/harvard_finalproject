@@ -1,0 +1,69 @@
+openapi: 3.0.3
+info:
+  title: JobPost Bulk Upload API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /jobposts/bulk_upload/:
+    post:
+      summary: Bulk upload multiple job posts
+      description: Upload multiple job posts in one API call.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - job_posts
+              properties:
+                job_posts:
+                  type: array
+                  description: List of job posts to upload
+                  items:
+                    type: object
+                    required:
+                      - user
+                      - title
+                    properties:
+                      user:
+                        type: integer
+                        description: User ID (must exist in User table)
+                        example: 1
+                      title:
+                        type: string
+                        example: "Software Developer"
+                      description:
+                        type: string
+                        example: "Develop and maintain web applications"
+                      location:
+                        type: string
+                        example: "Bangalore"
+                      salary_range:
+                        type: string
+                        example: "50k-70k"
+                      job_type:
+                        type: string
+                        example: "Full-time"
+      responses:
+        '201':
+          description: Job posts uploaded successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: "Job posts uploaded successfully."
+        '400':
+          description: Invalid input, e.g., missing required fields
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  job_posts:
+                    type: array
+                    description: Validation errors per job post

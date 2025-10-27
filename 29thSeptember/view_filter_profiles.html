@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>View & Filter Profiles - Question and Answer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <style>
+    body { font-family: Arial, Helvetica, sans-serif; line-height: 1.6; margin: 24px; color: #111; }
+    header { border-bottom: 1px solid #ddd; margin-bottom: 20px; }
+    h1 { font-size: 22px; margin: 0 0 6px 0; }
+    p.meta { color: #666; margin: 0 0 12px 0; }
+    section { margin-bottom: 18px; }
+    .card { background: #fafafa; border: 1px solid #eee; padding: 16px; border-radius: 8px; }
+    .question { border-left: 4px solid #007bff; padding: 12px; background: #f0f7ff; }
+    .response { border-left: 4px solid #28a745; padding: 12px; background: #f6fffa; }
+    pre { white-space: pre-wrap; word-wrap: break-word; background: #fff; padding: 12px; border-radius: 6px; border: 1px solid #eee; }
+    code { font-family: monospace; background: rgba(27,31,35,.05); padding: 2px 6px; border-radius: 4px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 8px; }
+    table, th, td { border: 1px solid #ddd; }
+    th, td { padding: 8px; text-align: left; }
+    footer { margin-top: 24px; color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Question & Answer: View / Filter / Sort Profiles</h1>
+    <p class="meta">Contents include endpoint design, Django models, serializers, views (with filtering & ordering), URLs and sample test data.</p>
+  </header>
+
+  <section>
+    <div class="card question">
+      <h2>Question</h2>
+      <pre>View the code for below features with backend code and api end point: View registered profiles, Filter/sort applicants by skill, experience, etc.</pre>
+    </div>
+  </section>
+
+  <section>
+    <div class="card response">
+      <h2>Assistant Response</h2>
+      <p>Below are the Django backend code snippets and API endpoint details to support:</p>
+      <ol>
+        <li>View all registered profiles</li>
+        <li>Filter profiles by skill, education, location, etc.</li>
+        <li>Sort profiles by experience or name</li>
+      </ol>
+
+      <h3>1. API Endpoints Design</h3>
+      <table>
+        <tr><th>Feature</th><th>Method</th><th>Endpoint</th><th>Description</th></tr>
+        <tr><td>View all profiles</td><td>GET</td><td>/api/profiles/</td><td>Returns all registered profiles</td></tr>
+        <tr><td>Filter profiles</td><td>GET</td><td>/api/profiles/?search=React&amp;experience=3</td><td>Filter by skill, experience, etc.</td></tr>
+        <tr><td>Sort profiles</td><td>GET</td><td>/api/profiles/?ordering=-experience</td><td>Sort by experience descending</td></tr>
+      </table>
+
+      <h3>2. models.py</h3>
+      <pre># users/models.py
+from django.db import models
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=100)
+    skills = models.CharField(max_length=255)  # Comma-separated skills
+    experience = models.FloatField(default=0)  # In years
+    education = models.CharField(max_length=255)
+    location = models.CharField(max_length=100, blank=True, null=True)
+
+    def __str__(self):
+        return self.full_name</pre>
+
+      <h3>3. serializers.py</h3>
+      <pre># users/serializers.py
+from rest_framework import serializers
+from .models import Profile
+
+class ProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'</pre>
+
+      <h3>4. views.py (with filtering & ordering)</h3>
+      <pre># users/views.py
+from rest_framework import viewsets, filters
+from .models import Profile
+from .serializers import ProfileSerializer
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    queryset = Profile.objects.all()
+    serializer_class = ProfileSerializer
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    # Add filtering and sorting
+    filter_backends = [filters.SearchFilter, filters.OrderingFilter]
+    search_fields = ['skills', 'education', 'location']
+    ordering_fields = ['experience', 'full_name']</pre>
+
+      <h3>5. urls.py</h3>
+      <pre># users/urls.py
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from .views import ProfileViewSet
+
+router = DefaultRouter()
+router.register(r'profiles', ProfileViewSet, basename='profile')
+
+urlpatterns = [
+    path('', include(router.urls)),
+]</pre>
+
+      <h3>6. Test Data (POST /api/profiles/)</h3>
+      <pre>Request (POST):
+{
+  "user": 1,
+  "full_name": "Narmadha Mohan",
+  "skills": "Python, Django, React",
+  "experience": 4,
+  "education": "M.Tech",
+  "location": "Chennai"
+}
+
+Response (GET /api/profiles/):
+[
+  {
+    "id": 1,
+    "user": 1,
+    "full_name": "Narmadha Mohan",
+    "skills": "Python, Django, React",
+    "experience": 4,
+    "education": "M.Tech",
+    "location": "Chennai"
+  }
+]</pre>
+
+      <h3>7. Example Queries</h3>
+      <ul>
+        <li><code>/api/profiles/?search=React</code> — Filter by skill name</li>
+        <li><code>/api/profiles/?ordering=-experience</code> — Sort by experience descending</li>
+        <li><code>/api/profiles/?search=Chennai&amp;ordering=full_name</code> — Combined filter and sort</li>
+      </ul>
+
+      <h3>8. Notes & Tips</h3>
+      <ul>
+        <li>For more advanced filtering (e.g., range, exact match), consider installing <code>django-filter</code> and using <code>DjangoFilterBackend</code>.</li>
+        <li>Storing skills as a many-to-many relation (separate Skill model) is better for complex queries; the example uses comma-separated skills for simplicity.</li>
+        <li>Ensure permissions fit your workflow: recruiters might need read access while only users can update their own profiles.</li>
+      </ul>
+
+      <p>If you want, I can:</p>
+      <ul>
+        <li>Provide code to support advanced filters (years range, skill contains multiple values) using <code>django-filter</code>.</li>
+        <li>Create a Postman collection JSON you can import directly.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>
+    <p>Generated for your Job Portal project — exportable HTML for offline reference.</p>
+  </footer>
+</body>
+</html>

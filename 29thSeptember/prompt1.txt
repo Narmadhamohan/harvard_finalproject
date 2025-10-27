@@ -1,0 +1,66 @@
+Give me a plan for job posting website features: 
+
+Got it 👍 You want a plan of features for a Job Posting Website. I’ll break it down into core features, advanced features, and admin/employer/jobseeker perspectives so you can see the full picture.
+
+
+1. User Roles
+
+Job Seekers – Browse and apply for jobs.
+
+Employers/Recruiters – Post jobs, manage applications.
+
+
+2. Job Seeker Features
+
+Account & Profile
+
+Signup/Login (email, Google, LinkedIn)
+
+Create and update profile (resume, skills, education, experience)
+
+Upload multiple resumes/cover letters
+
+Job Search & Apply
+
+Search jobs by title, skills, company, location
+
+Advanced filters (experience level, salary range, job type)
+
+Save jobs for later
+
+Apply directly with resume or via LinkedIn/third-party
+
+
+3. Employer Features
+
+Account & Company Profile
+
+Employer registration & verification
+
+Create/manage company profile with branding/logo
+
+Post unlimited jobs (or based on plan)
+
+Job Posting
+
+Easy job posting form (title, description, skills, salary, location, job type)
+
+Option to feature/promote job postings
+
+Clone/reuse past job posts
+
+Applicant Management
+
+View applicant list (resume + cover letter + profile)
+
+Filter/sort applicants by skill, experience, etc.
+
+Contact applicants directly
+
+Download applicant resumes
+
+Status updates (shortlist, reject, interview)
+
+
+
+1. Justice - 

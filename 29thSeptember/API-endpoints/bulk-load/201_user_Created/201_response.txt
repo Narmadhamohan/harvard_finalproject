@@ -1,0 +1,1255 @@
+{
+    "created": [
+        {
+            "email": "aarav1@example.com",
+            "username": "aarav1",
+            "password": "pbkdf2_sha256$870000$9HQUFE8dJOsPUAPPo3Z2b2$zAcg4VshyajCohVrEH7+12v5XAiSqME+OR3ioBAe9Ig=",
+            "profile": {
+                "id": 2,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Kolkata",
+                "full_name": "Aarav Sharma",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 1,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:12:59.183741Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "diya2@example.com",
+            "username": "diya2",
+            "password": "pbkdf2_sha256$870000$zpMBreqfiLRGNRNG2KNT37$1YVr8QLlI7N9oVMquwXM5cwcgHV9z18ENqQvrDD4+vg=",
+            "profile": {
+                "id": 3,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Bangalore",
+                "full_name": "Diya Patel",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 2,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:02.989658Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "rohan3@example.com",
+            "username": "rohan3",
+            "password": "pbkdf2_sha256$870000$yNOqVxq3DgaCkCeP55vTsy$6HPdF08H2RbGkAkl4rvTVqgp9HvKOrrAPb/IDr62ltw=",
+            "profile": {
+                "id": 4,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Kolkata",
+                "full_name": "Rohan Iyer",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 3,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:13:05.502089Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "saanvi4@example.com",
+            "username": "saanvi4",
+            "password": "pbkdf2_sha256$870000$JdW7IoPfXJQenjl8iumydV$eUVaf7tsuIlFPchndHJZmr1ImlOXCl0kPvRkYDfPTyA=",
+            "profile": {
+                "id": 5,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Delhi",
+                "full_name": "Saanvi Reddy",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 4,
+                    "title": "Backend Developer",
+                    "description": "Looking for a skilled Backend Developer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:13:08.160660Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "arjun5@example.com",
+            "username": "arjun5",
+            "password": "pbkdf2_sha256$870000$ZCPhFR64Y7rB9Qtnw0EPrL$mA3BbHyENhjugPE8Rw3E7chIOnMmcG7PWMiwr0A+EfA=",
+            "profile": {
+                "id": 6,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Kolkata",
+                "full_name": "Arjun Mehta",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 5,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:13:10.815249Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "ananya6@example.com",
+            "username": "ananya6",
+            "password": "pbkdf2_sha256$870000$hUSIdjSMIFW33qE8S2ZNv8$X9sU10qx6E2obmuUhnB/eDUht7CGLlHuTmsnemI4mSg=",
+            "profile": {
+                "id": 7,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Bangalore",
+                "full_name": "Ananya Gupta",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 6,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:13.569193Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "vikram7@example.com",
+            "username": "vikram7",
+            "password": "pbkdf2_sha256$870000$RyMYuhDpMg6wqJ1qdfxb9w$Ex2Jmmg+w7fhSZPEHIBcbXgxY/7TaavRVDs1HSBvW64=",
+            "profile": {
+                "id": 8,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Hyderabad",
+                "full_name": "Vikram Nair",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 7,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Hyderabad",
+                    "posted_on": "2025-10-24T07:13:16.140765Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "kavya8@example.com",
+            "username": "kavya8",
+            "password": "pbkdf2_sha256$870000$LrvSVKj9mWysgpMUcSlAUu$rL6T4mbBfpOiqJjFExliu2pBtp0PzdJ3lv+UlFllQ2A=",
+            "profile": {
+                "id": 9,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Chennai",
+                "full_name": "Kavya Joshi",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 8,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:13:19.167660Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "rahul9@example.com",
+            "username": "rahul9",
+            "password": "pbkdf2_sha256$870000$wUwS1OK9sRzW2hXVKGGNph$cCPwr0XVB4HvOwM47mZIOG4mmnh759MVfettYQ9lD5s=",
+            "profile": {
+                "id": 10,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Delhi",
+                "full_name": "Rahul Verma",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 9,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:13:22.143090Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "priya10@example.com",
+            "username": "priya10",
+            "password": "pbkdf2_sha256$870000$icpB4n50POf5tiBiGg5gd3$FcootZkRbiUfdScxUlKtMVfhDgQWQ8tzS8bgxRo6P1I=",
+            "profile": {
+                "id": 11,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Delhi",
+                "full_name": "Priya Das",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 10,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:13:24.599665Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "karthik11@example.com",
+            "username": "karthik11",
+            "password": "pbkdf2_sha256$870000$xcnJOIOp2P5Ov3VVWVefeD$H1nrCWmNrTICQawKzJIriFUfoai2i9MPPWIhKA/OTiQ=",
+            "profile": {
+                "id": 12,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Chennai",
+                "full_name": "Karthik Rao",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 11,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:13:27.341113Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "sneha12@example.com",
+            "username": "sneha12",
+            "password": "pbkdf2_sha256$870000$Z4eP0B1M8Uu9ANMDjq8Q4e$b1GPHodRc768EBw1jKwp9xMiE/+8YCsB62vh2LxfpHw=",
+            "profile": {
+                "id": 13,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Chennai",
+                "full_name": "Sneha Menon",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 12,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:13:29.784429Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "manish13@example.com",
+            "username": "manish13",
+            "password": "pbkdf2_sha256$870000$ULxoCt0IkYSSfztBxXICbr$3yLnQ5PHkXGTNxTuvgd/XPnsBDjPrEyMn5w/ELUwS00=",
+            "profile": {
+                "id": 14,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Bangalore",
+                "full_name": "Manish Bhat",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 13,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:32.654780Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "aditi14@example.com",
+            "username": "aditi14",
+            "password": "pbkdf2_sha256$870000$3qmeQMWayp3nVnCnq5ReQ5$ti/9WjYXexdYhuldUGH1u9AP05JK3PYKNJTsuO7DLDk=",
+            "profile": {
+                "id": 15,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Bangalore",
+                "full_name": "Aditi Sen",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 14,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:35.174588Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "neha15@example.com",
+            "username": "neha15",
+            "password": "pbkdf2_sha256$870000$hta4RQXSHZPKpx6jxbuNLv$TAv31upEv1SgtpIKVB7p8QJUI4r4z342FSk00vwH6kA=",
+            "profile": {
+                "id": 16,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Delhi",
+                "full_name": "Neha Kapoor",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 15,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:13:38.458467Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "ravi16@example.com",
+            "username": "ravi16",
+            "password": "pbkdf2_sha256$870000$LOuOAtd3X9Ob3rqpj5G7rh$3O/qHSBsy89F16vBpPcS1R+9BajLt9tgKA2XB5vJdWY=",
+            "profile": {
+                "id": 17,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Bangalore",
+                "full_name": "Ravi Kumar",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 16,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:40.701179Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "pooja17@example.com",
+            "username": "pooja17",
+            "password": "pbkdf2_sha256$870000$NeIKrYySXGGxYntDZfeQKg$AuTF7f5osPLL+2eXezt1h9BjXwc845gEitSoDWBeF08=",
+            "profile": {
+                "id": 18,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Chennai",
+                "full_name": "Pooja Sharma",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 17,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:13:42.455351Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "nikhil18@example.com",
+            "username": "nikhil18",
+            "password": "pbkdf2_sha256$870000$Stwc9cnekd3PnH668sMROM$goZ9je2EteYtGIeAnASzSocrtmdDY0rRflWkyVWhiYQ=",
+            "profile": {
+                "id": 19,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Bangalore",
+                "full_name": "Nikhil Jain",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 18,
+                    "title": "Backend Developer",
+                    "description": "Looking for a skilled Backend Developer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:44.990854Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "meera19@example.com",
+            "username": "meera19",
+            "password": "pbkdf2_sha256$870000$aZYevRBLxexdUxmz3veAYS$6JOnNXojm4Iw+DAzfDGTO9pN/icCUSgns9X8aCHo8jI=",
+            "profile": {
+                "id": 20,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Chennai",
+                "full_name": "Meera Pillai",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 19,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:13:46.979192Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "aditya20@example.com",
+            "username": "aditya20",
+            "password": "pbkdf2_sha256$870000$UEub5YAHPfhLS4UuzDeV2F$890VrCIiPVwFzWfa50sZnos9VFgY5AMMAy/0FpdJiFk=",
+            "profile": {
+                "id": 21,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Hyderabad",
+                "full_name": "Aditya Ghosh",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 20,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Hyderabad",
+                    "posted_on": "2025-10-24T07:13:48.793646Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "ishita21@example.com",
+            "username": "ishita21",
+            "password": "pbkdf2_sha256$870000$Ll6zTS0aRzqW3fvOKxe2ja$VIB7PhtOK3XvWmNi186+xSCUUWMRi8+bshE2Mrxc0j4=",
+            "profile": {
+                "id": 22,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Kolkata",
+                "full_name": "Ishita Roy",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 21,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:13:52.327179Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "harish22@example.com",
+            "username": "harish22",
+            "password": "pbkdf2_sha256$870000$AOv4CKt6A8USC4UCBAw8sV$Z+FTQNw2cBK/TSaBET7bKXziCZJ74+BvZrNIl41liV8=",
+            "profile": {
+                "id": 23,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Bangalore",
+                "full_name": "Harish Nambiar",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 22,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:54.814216Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "lavanya23@example.com",
+            "username": "lavanya23",
+            "password": "pbkdf2_sha256$870000$rA6l3OJCqlaUbGouOMf1td$Hv4iJwV54JauQabMFPpLb47LXJ6bDFZUGNjUxt4Q524=",
+            "profile": {
+                "id": 24,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Bangalore",
+                "full_name": "Lavanya Krishnan",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 23,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:13:57.546276Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "ritesh24@example.com",
+            "username": "ritesh24",
+            "password": "pbkdf2_sha256$870000$b0tC01ToVlJT2HfXpMe0BF$Vum5EjILeiUuY/qFc7EK1kOzey6hgSVVwcwCqyW7IDs=",
+            "profile": {
+                "id": 25,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Kolkata",
+                "full_name": "Ritesh Malhotra",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 24,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:13:59.937816Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "rashmi25@example.com",
+            "username": "rashmi25",
+            "password": "pbkdf2_sha256$870000$4dNlzlu13V8wSDSkwr4oLV$HyLqZNDwsbbbez7in+6ZhtgBZy18wXYQX08fqHOQpVE=",
+            "profile": {
+                "id": 26,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Delhi",
+                "full_name": "Rashmi Sinha",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 25,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:14:02.828685Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "aman26@example.com",
+            "username": "aman26",
+            "password": "pbkdf2_sha256$870000$hipHlL55Hd7jJXysE1FgXw$ar6FuI01N4DbzxaWW6jq4tr5P3KfPHNRYRaoC+9kPhg=",
+            "profile": {
+                "id": 27,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Chennai",
+                "full_name": "Aman Thakur",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 26,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:14:05.260749Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "tanya27@example.com",
+            "username": "tanya27",
+            "password": "pbkdf2_sha256$870000$4oPdUapQRvkVxifW6x6W4P$q9cxnVM6/dY4Jv9iTufpeAEPbenM8E4TR40Aak458T8=",
+            "profile": {
+                "id": 28,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Pune",
+                "full_name": "Tanya Singh",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 27,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Pune",
+                    "posted_on": "2025-10-24T07:14:08.126228Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "varun28@example.com",
+            "username": "varun28",
+            "password": "pbkdf2_sha256$870000$lUqPd6wVWwVICUcZ0dcRO7$uXNdRDGm5aojzQ0er4i0cM6l7KQaxIPxTikj+sL0Vnc=",
+            "profile": {
+                "id": 29,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Hyderabad",
+                "full_name": "Varun Nanda",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 28,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Hyderabad",
+                    "posted_on": "2025-10-24T07:14:10.666833Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "simran29@example.com",
+            "username": "simran29",
+            "password": "pbkdf2_sha256$870000$AqGyE8oYN1mNYFIJFuIaWz$LAf1rOzyzxrzHr7cZwSAFh/eDbxJfyVzMI1mKK/51Ps=",
+            "profile": {
+                "id": 30,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Bangalore",
+                "full_name": "Simran Kaur",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 29,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:14:13.430904Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "vikas30@example.com",
+            "username": "vikas30",
+            "password": "pbkdf2_sha256$870000$xBYredXzHTgzrkbQTa56zO$w8tr3Kmt1TOsHTemvsvuYcvn0ca4k6/YDtiPP6JjtAE=",
+            "profile": {
+                "id": 31,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Kolkata",
+                "full_name": "Vikas Patil",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 30,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:14:15.859264Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "rajesh31@example.com",
+            "username": "rajesh31",
+            "password": "pbkdf2_sha256$870000$qdOsel02QZYLtKbQTS1l5X$ZfqQPbpzA8YF+qbrjGWzKzBH3/kDuCajwDL71bihlq8=",
+            "profile": {
+                "id": 32,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Kolkata",
+                "full_name": "Rajesh Das",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 31,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:14:18.586929Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "shreya32@example.com",
+            "username": "shreya32",
+            "password": "pbkdf2_sha256$870000$Qv9Xq8SOZGcLT2XjDq2COd$89UkW6M/u2Is7Fg6QrtkiSHBxDuLCQNdv4hl1StBMMA=",
+            "profile": {
+                "id": 33,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Chennai",
+                "full_name": "Shreya Nair",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 32,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:14:21.025598Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "aakash33@example.com",
+            "username": "aakash33",
+            "password": "pbkdf2_sha256$870000$u5Na7oWmT59417g2UY29by$u0BY3yoW0CiZJvOeMiUkYYnOKTD7tRB/XRPJL2hrCpc=",
+            "profile": {
+                "id": 34,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Delhi",
+                "full_name": "Aakash Bansal",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 33,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:14:23.719531Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "divya34@example.com",
+            "username": "divya34",
+            "password": "pbkdf2_sha256$870000$cwD2dUEgQnQkHOgdUF0d7f$CWmt350o1xQE1bIbD17ZQJZcHD+/p4iAa9DjrrPEYZ4=",
+            "profile": {
+                "id": 35,
+                "skills": "Python, Django",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Delhi",
+                "full_name": "Divya Joshi",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 34,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:14:26.329371Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "deepak35@example.com",
+            "username": "deepak35",
+            "password": "pbkdf2_sha256$870000$NlBEXJyz3BkzWk2Fz37cQ6$XDoXgi7imkWqFWaiARdSZOIUfDKHA2VtwPTBRAO3UBo=",
+            "profile": {
+                "id": 36,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Pune",
+                "full_name": "Deepak Reddy",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 35,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Pune",
+                    "posted_on": "2025-10-24T07:14:28.984062Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "anjali36@example.com",
+            "username": "anjali36",
+            "password": "pbkdf2_sha256$870000$M8azi3l6WxnVPtzVffsQQP$Gnx4VSeK0KRNVwem9s4QK8739mw5mHPiA3sHn4dTKUo=",
+            "profile": {
+                "id": 37,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Chennai",
+                "full_name": "Anjali Iyer",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 36,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:14:31.674214Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "suresh37@example.com",
+            "username": "suresh37",
+            "password": "pbkdf2_sha256$870000$YDyyzdzhtCMLl7LRcz5RUE$FZ/uPObQL3na/iZk6VPDiKKIqwASiuHjPoUk4DyyIb4=",
+            "profile": {
+                "id": 38,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Delhi",
+                "full_name": "Suresh Gupta",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 37,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:14:34.216539Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "isha38@example.com",
+            "username": "isha38",
+            "password": "pbkdf2_sha256$870000$pwpYOZdFMkVmvnqexcI6sg$2RG78SeWsGBbEwj0hk7E34bPXcvKNloyE6J+wdC27lE=",
+            "profile": {
+                "id": 39,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "2 years",
+                "location": "Pune",
+                "full_name": "Isha Menon",
+                "preferred_mode": "Online"
+            },
+            "job_posts": [
+                {
+                    "id": 38,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Pune",
+                    "posted_on": "2025-10-24T07:14:37.128565Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "rohit39@example.com",
+            "username": "rohit39",
+            "password": "pbkdf2_sha256$870000$Tpw09q2Ht53IPY9NJAadnC$DZ1W1QFBLuH538TwkbPoOIsU+jlTzmj8fNEsneo+yQE=",
+            "profile": {
+                "id": 40,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Delhi",
+                "full_name": "Rohit Jain",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 39,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:14:39.635265Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "nisha40@example.com",
+            "username": "nisha40",
+            "password": "pbkdf2_sha256$870000$tkslMahVbfVffbhoDPp4f3$A0FKysL71m6Ww+6AwXx8iq9L/doIZBD3SGfl5rLmUk4=",
+            "profile": {
+                "id": 41,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Chennai",
+                "full_name": "Nisha Sharma",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 40,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:14:42.592783Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "siddharth41@example.com",
+            "username": "siddharth41",
+            "password": "pbkdf2_sha256$870000$v6cfS2YWaySW080qG5BrnX$vK4cdtnVM5uzYLhitR5KFgy+OcdT85SMtUXVYwk+bh8=",
+            "profile": {
+                "id": 42,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Pune",
+                "full_name": "Siddharth Rao",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 41,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Pune",
+                    "posted_on": "2025-10-24T07:14:45.656978Z",
+                    "salary_range": "3-5 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "chandni42@example.com",
+            "username": "chandni42",
+            "password": "pbkdf2_sha256$870000$BGvv8VS43nC67H4nOXbZyY$NZHUS4bRuL6S6ezpaUwYqGcRS78CANDJfD6WEmoG0yU=",
+            "profile": {
+                "id": 43,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Delhi",
+                "full_name": "Chandni Patel",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 42,
+                    "title": "Full Stack Engineer",
+                    "description": "Looking for a skilled Full Stack Engineer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:14:48.266685Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "gaurav43@example.com",
+            "username": "gaurav43",
+            "password": "pbkdf2_sha256$870000$ZJ8nZ5dZBOg8qWeY0Mx8d3$i/ik5qZWvbapdLcL8y1YgIJQbd4iD1oDJOvCnvkGVTg=",
+            "profile": {
+                "id": 44,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Chennai",
+                "full_name": "Gaurav Mishra",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 43,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Chennai",
+                    "posted_on": "2025-10-24T07:14:51.119960Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "aishwarya44@example.com",
+            "username": "aishwarya44",
+            "password": "pbkdf2_sha256$870000$6OYkssLHz1SbZeCcC1v5LA$Jjz7NPteh7BfNlO7cTJ2kxCVsF6465UW9Cvqu7NdxW8=",
+            "profile": {
+                "id": 45,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Bangalore",
+                "full_name": "Aishwarya Pillai",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 44,
+                    "title": "Backend Developer",
+                    "description": "Looking for a skilled Backend Developer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:14:53.735839Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "mohan45@example.com",
+            "username": "mohan45",
+            "password": "pbkdf2_sha256$870000$1D3MqrXHgleJGOqTUIsAzP$SBMz8lNhLUR0duiHIh2B6hZ+6qNpq8Tz80ql0HnATGg=",
+            "profile": {
+                "id": 46,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Kolkata",
+                "full_name": "Mohan Kumar",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 45,
+                    "title": "Backend Developer",
+                    "description": "Looking for a skilled Backend Developer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:14:56.377636Z",
+                    "salary_range": "6-8 LPA",
+                    "job_type": "Part-time"
+                }
+            ]
+        },
+        {
+            "email": "rekha46@example.com",
+            "username": "rekha46",
+            "password": "pbkdf2_sha256$870000$MVOluKnlRghJciTdVpjaoD$BRaPgQhu9fGSsf5jwlsvomiUw1UBz2Hg3uZAkNcN6zE=",
+            "profile": {
+                "id": 47,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Bangalore",
+                "full_name": "Rekha Verma",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 46,
+                    "title": "Frontend Engineer",
+                    "description": "Looking for a skilled Frontend Engineer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:14:59.067492Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "kiran47@example.com",
+            "username": "kiran47",
+            "password": "pbkdf2_sha256$870000$y8fFYyAd3HhOLvPMqDJeqi$FyMo3dXzqp2huq0bXR8uiChoYgIRhjuwkX2KA19Z778=",
+            "profile": {
+                "id": 48,
+                "skills": "C++, Algorithms",
+                "education": "B.Tech CSE",
+                "experience": "4 years",
+                "location": "Bangalore",
+                "full_name": "Kiran Raj",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 47,
+                    "title": "Python Developer",
+                    "description": "Looking for a skilled Python Developer with hands-on experience.",
+                    "location": "Bangalore",
+                    "posted_on": "2025-10-24T07:15:01.649425Z",
+                    "salary_range": "5-7 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "tanvi48@example.com",
+            "username": "tanvi48",
+            "password": "pbkdf2_sha256$870000$hlBpyb41baRnIoD7D1NQNr$6JpFqeipbQOmOBGO/ZBpPMEqUAqtUIGtqO8BI6AWR1I=",
+            "profile": {
+                "id": 49,
+                "skills": "HTML, CSS, JS",
+                "education": "B.Tech CSE",
+                "experience": "3 years",
+                "location": "Delhi",
+                "full_name": "Tanvi Mehta",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 48,
+                    "title": "Backend Developer",
+                    "description": "Looking for a skilled Backend Developer with hands-on experience.",
+                    "location": "Delhi",
+                    "posted_on": "2025-10-24T07:15:04.649167Z",
+                    "salary_range": "4-6 LPA",
+                    "job_type": "Freelance"
+                }
+            ]
+        },
+        {
+            "email": "sandeep49@example.com",
+            "username": "sandeep49",
+            "password": "pbkdf2_sha256$870000$yaPJ45wFM40DD4oPWNtn9g$3zq/0qClO9YOFFzx0oDUsNGY9ocx7/OZf+30SOgEcqM=",
+            "profile": {
+                "id": 50,
+                "skills": "Java, Spring Boot",
+                "education": "B.Tech CSE",
+                "experience": "1 years",
+                "location": "Pune",
+                "full_name": "Sandeep Bhat",
+                "preferred_mode": "Hybrid"
+            },
+            "job_posts": [
+                {
+                    "id": 49,
+                    "title": "Data Analyst",
+                    "description": "Looking for a skilled Data Analyst with hands-on experience.",
+                    "location": "Pune",
+                    "posted_on": "2025-10-24T07:15:07.005882Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        },
+        {
+            "email": "ritu50@example.com",
+            "username": "ritu50",
+            "password": "pbkdf2_sha256$870000$XsVhxmZMd5dtmKN1fcnyQx$UKbKnNIXQ6P6iNtKU2ktzhD8fAJdQHg1nmmzmwoIpuQ=",
+            "profile": {
+                "id": 51,
+                "skills": "React, Node.js",
+                "education": "B.Tech CSE",
+                "experience": "5 years",
+                "location": "Kolkata",
+                "full_name": "Ritu Kapoor",
+                "preferred_mode": "Offline"
+            },
+            "job_posts": [
+                {
+                    "id": 50,
+                    "title": "Backend Developer",
+                    "description": "Looking for a skilled Backend Developer with hands-on experience.",
+                    "location": "Kolkata",
+                    "posted_on": "2025-10-24T07:15:09.935147Z",
+                    "salary_range": "7-9 LPA",
+                    "job_type": "Full-time"
+                }
+            ]
+        }
+    ],
+    "errors": []
+}

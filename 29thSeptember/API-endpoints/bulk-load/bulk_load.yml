@@ -1,0 +1,132 @@
+openapi: 3.0.3
+info:
+  title: Django Bulk Upload API
+  version: 1.0.0
+  description: |
+    API for bulk uploading Users with their Profiles and Job Posts.
+    This schema matches the Django models implemented for bulk upload testing.
+
+servers:
+  - url: http://127.0.0.1:8000
+    description: Local development server
+
+paths:
+  /api/bulk-upload/:
+    post:
+      summary: Bulk upload users, profiles, and job posts
+      operationId: bulkUserUpload
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkUserUploadRequest'
+            example:
+              users:
+                - email: "user1@example.com"
+                  username: "user1"
+                  password: "Pass@123"
+                  profile:
+                    full_name: "User One"
+                    location: "Chennai"
+                    skills: "Python, Django"
+                    education: "B.Tech CSE"
+                    experience: "2 years"
+                    preferred_mode: "Online"
+                  job_posts:
+                    - title: "Python Developer"
+                      description: "Looking for backend developer"
+                      location: "Remote"
+                      salary_range: "5-7 LPA"
+                      job_type: "Full-time"
+      responses:
+        "201":
+          description: Successfully created all records
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkUploadResponse'
+        "207":
+          description: Partial success — some records have validation errors
+        "400":
+          description: Invalid input format or missing required fields
+
+components:
+  schemas:
+
+    BulkUserUploadRequest:
+      type: object
+      properties:
+        users:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCreateRequest'
+
+    UserCreateRequest:
+      type: object
+      required:
+        - email
+        - username
+        - password
+        - profile
+      properties:
+        email:
+          type: string
+          format: email
+        username:
+          type: string
+        password:
+          type: string
+          format: password
+        profile:
+          $ref: '#/components/schemas/Profile'
+        job_posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/JobPost'
+
+    Profile:
+      type: object
+      properties:
+        full_name:
+          type: string
+        location:
+          type: string
+        skills:
+          type: string
+        education:
+          type: string
+        experience:
+          type: string
+        preferred_mode:
+          type: string
+          description: Online / Offline / Hybrid
+
+    JobPost:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        location:
+          type: string
+        salary_range:
+          type: string
+        job_type:
+          type: string
+          description: Full-time / Part-time / Freelance
+
+    BulkUploadResponse:
+      type: object
+      properties:
+        created:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserCreateRequest'
+        errors:
+          type: array
+          items:
+            type: object
+            example:
+              email: ["This field must be unique."]

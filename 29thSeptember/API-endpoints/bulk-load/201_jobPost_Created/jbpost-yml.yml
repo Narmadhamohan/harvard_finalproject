@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  title: JobPost Bulk Upload API
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /jobposts/bulk_upload/:
+    post:
+      summary: Bulk upload job posts
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                job_posts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      user:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: "Software Developer"
+                      description:
+                        type: string
+                        example: "Develop and maintain web applications"
+                      location:
+                        type: string
+                        example: "Bangalore"
+                      salary_range:
+                        type: string
+                        example: "50k-70k"
+                      job_type:
+                        type: string
+                        example: "Full-time"
+      responses:
+        '201':
+          description: Job posts uploaded successfully
+        '400':
+          description: Invalid input

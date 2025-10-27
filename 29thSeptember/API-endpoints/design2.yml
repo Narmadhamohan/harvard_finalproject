@@ -1,0 +1,111 @@
+openapi: 3.0.0
+info:
+  title: Job Portal API
+  version: 1.0.0
+  description: API schema for Job Portal features (Signup, Login, Profile, Resume Upload)
+
+servers:
+  - url: http://127.0.0.1:8000/api/
+    description: Local Django Server
+
+paths:
+  /users/:
+    post:
+      summary: Signup new user
+      description: Register a new user with email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: narmadha@test.com
+                password:
+                  type: string
+                  example: Test@123
+      responses:
+        "201":
+          description: User created successfully
+
+  /users/login/:
+    post:
+      summary: Login existing user
+      description: Authenticate a user by email and password
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: narmadha@test.com
+                password:
+                  type: string
+                  example: Test@123
+      responses:
+        "200":
+          description: Login successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Login successful
+                  user_id:
+                    type: integer
+                    example: 1
+
+  /profiles/:
+    post:
+      summary: Create or update user profile
+      description: Add or modify user profile information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: integer
+                  example: 1
+                skills:
+                  type: string
+                  example: Python, Django, React
+                education:
+                  type: string
+                  example: B.Tech in Computer Science
+                experience:
+                  type: string
+                  example: 5 years in web development
+      responses:
+        "201":
+          description: Profile created or updated successfully
+
+  /resumes/:
+    post:
+      summary: Upload resume file
+      description: Upload multiple resumes or cover letters
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: integer
+                  example: 1
+                file:
+                  type: string
+                  format: binary
+      responses:
+        "201":
+          description: Resume uploaded successfully

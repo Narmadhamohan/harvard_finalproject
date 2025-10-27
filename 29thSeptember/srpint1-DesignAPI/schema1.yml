@@ -1,0 +1,119 @@
+openapi: 3.0.3
+info:
+  title: Job Posting API
+  version: 1.0.0
+  description: API for signup, login, profile and resume upload
+servers:
+  - url: http://localhost:8000/api
+paths:
+  /auth/register/:
+    post:
+      summary: User registration
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              RegisterExample:
+                value:
+                  email: alice@example.com
+                  username: alice
+                  password: Test@1234
+      responses:
+        "201":
+          description: Registered user details
+  /auth/login/:
+    post:
+      summary: User login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              LoginExample:
+                value:
+                  email: alice@example.com
+                  password: Test@1234
+      responses:
+        "200":
+          description: JWT tokens
+          content:
+            application/json:
+              example:
+                access: eyJhbGciOiJIUzI1...
+                refresh: eyJhbGciOiJIUzI1...
+  /profiles/:
+    post:
+      summary: Create profile
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              ProfileExample:
+                value:
+                  full_name: Alice Johnson
+                  skills: Python, Django, React
+                  education: B.Tech Computer Science, 2018
+                  experience: 3 years Backend Developer
+      responses:
+        "201":
+          description: Profile created
+  /profiles/{id}/:
+    patch:
+      summary: Update profile
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            examples:
+              UpdateExample:
+                value:
+                  skills: Python, Django, React, Docker
+      responses:
+        "200":
+          description: Profile updated
+  /resumes/:
+    post:
+      summary: Upload resume or cover letter
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                profile:
+                  type: integer
+                file:
+                  type: string
+                  format: binary
+                is_cover_letter:
+                  type: boolean
+            examples:
+              ResumeExample:
+                value:
+                  profile: 1
+                  file: resume.pdf
+                  is_cover_letter: false
+      responses:
+        "201":
+          description: Resume uploaded
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
