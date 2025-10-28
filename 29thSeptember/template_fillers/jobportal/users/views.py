@@ -31,8 +31,8 @@ from .pagination import ApplicatntInfiniteScrollPagination
 
 
 #Level 3
-from .models import Mail, JobApplication, JobPost
-from .serializers import MailSerializer, JobApplicationSerializer, ApplicantListSerializer
+from .models import  JobApplication, JobPost
+from .serializers import  JobApplicationSerializer, ApplicantListSerializer
 from django.core.mail import send_mail as django_send_mail
 from rest_framework.permissions import IsAuthenticated
 #For ApplicantViewSet
@@ -265,7 +265,7 @@ class JobPostBulkUploadView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 #Level 3
-class MailViewSet(viewsets.ModelViewSet):
+""" class MailViewSet(viewsets.ModelViewSet):
     queryset = Mail.objects.all().order_by('-sent_on')
     serializer_class = MailSerializer
     permission_classes = [IsAuthenticated]
@@ -314,4 +314,4 @@ class MailViewSet(viewsets.ModelViewSet):
             # if send fails, we keep sent_via_email False; don't raise 500
             pass
 
-        return mail
+        return mail """

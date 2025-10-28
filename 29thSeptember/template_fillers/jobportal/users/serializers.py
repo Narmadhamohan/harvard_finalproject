@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import User, Profile, JobPost
 #Level 3 - 
-from .models import Mail, JobApplication
+from .models import  JobApplication
 from django.conf import settings
 #User = settings.AUTH_USER_MODEL
 #You can define nested serializers so that one JSON request can create all linked records.
@@ -103,22 +103,26 @@ class JobPostBulkSerializer(serializers.Serializer):
         
         
 #Level 3 - serializers
-class MailSerializer(serializers.ModelSerializer):
-    sender = serializers.PrimaryKeyRelatedField(read_only=True)
-    recipient_email = serializers.EmailField(write_only=True, required=False)
+""" class MailSerializer(serializers.ModelSerializer):
+    sender = serializers.ReadOnlyField(source='sender.email')
+    recipient_email = serializers.EmailField(write_only=True)
 
     class Meta:
         model = Mail
-        fields = ['id', 'sender', 'recipient', 'recipient_email', 'subject', 'body', 'sent_on', 'sent_via_email']
-        read_only_fields = ['id', 'sender', 'sent_on', 'sent_via_email']
+        fields = ['id', 'sender', 'recipient_email', 'subject', 'body', 'sent_on', 'sent_via_email']
+        read_only_fields = ['id', 'sent_on', 'sent_via_email']
 
-    def validate(self, data):
-        # allow recipient or recipient_email
-        if not data.get('recipient') and not data.get('recipient_email'):
-            raise serializers.ValidationError("Provide 'recipient' (user id) or 'recipient_email'.")
-        return data
+    def create(self, validated_data):
+        sender = self.context['request'].user
+        recipient_email = validated_data.pop('recipient_email')
+        try:
+            recipient = User.objects.get(email=recipient_email)
+        except User.DoesNotExist:
+            raise serializers.ValidationError({"recipient_email": "User with this email does not exist."})
 
-
+        mail = Mail.objects.create(sender=sender, recipient=recipient, **validated_data)
+        return mail
+"""
 
 class JobApplicationSerializer(serializers.ModelSerializer):
     #applicant = serializers.PrimaryKeyRelatedField(read_only=True)

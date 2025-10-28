@@ -68,7 +68,7 @@ class JobPost(models.Model):
 #Level 3 - Tasks - Mail and posted jobs    
 #User = settings.AUTH_USER_MODEL
     
-class Mail(models.Model):
+"""class Mail(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE, related_name='sent_mails')
     recipient = models.ForeignKey(User, on_delete=models.CASCADE, related_name='received_mails')
     subject = models.CharField(max_length=255)
@@ -77,7 +77,7 @@ class Mail(models.Model):
     sent_via_email = models.BooleanField(default=False)  # whether we actually emailed too
 
     def __str__(self):
-        return f"{self.subject} -> {self.recipient}"
+        return f"{self.subject} -> {self.recipient}" """
         
 class JobApplication(models.Model):
     STATUS_CHOICES = [

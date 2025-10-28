@@ -26,8 +26,9 @@ from users.views import BulkUserUploadAPIView
 #error because of .views import, instead of users.views
 from users.views import JobPostBulkUploadView
 #Level 3
-from users.views import MailViewSet
+#from users.views import MailViewSet
 from users.views import JobApplicantViewSet  
+from communication.urls import router as communication_router
 
 
 #added for bulkview
@@ -39,7 +40,7 @@ router.register(r'users', UserViewSet)
 router.register(r'profiles', ProfileViewSet)
 #router.register(r'resumes', ResumeViewSet)  
 router.register(r'jobposts', JobPostViewSet, basename='jobpost')
-router.register(r'mails', MailViewSet, basename='mail')
+#router.register(r'mails', MailViewSet, basename='mail')
 router.register(r'applications', JobApplicantViewSet, basename='job-applications')
 
 
@@ -64,6 +65,7 @@ urlpatterns = [
     path('api/jobposts/<int:pk>/applicants/', 
          JobApplicantViewSet.as_view({'get': 'list'}), 
          name='jobpost-applicants'),
+    path('api/', include(communication_router.urls)), #communication mail app added
     path('api/bulk-upload/', BulkUserUploadAPIView.as_view(), name='bulk-upload'),
     path('jobposts/bulk_upload/', JobPostBulkUploadView.as_view(), name='jobpost-bulk-upload'),
 ]
