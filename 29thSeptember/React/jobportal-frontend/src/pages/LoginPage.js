@@ -1,0 +1,49 @@
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axiosClient from "../api/axiosClient";
+import "../theme.css";
+
+export default function LoginPage() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      const res = await axiosClient.post("token/", { username, password });
+      localStorage.setItem("accessToken", res.data.access);
+      localStorage.setItem("refreshToken", res.data.refresh);
+      navigate("/dashboard"); // ✅ redirect to dashboard
+    } catch (err) {
+      setError("Invalid username or password");
+    }
+  };
+
+  return (
+    <div className="login-container">
+      <h2 className="text-center">Job Portal Login</h2>
+      <form onSubmit={handleLogin}>
+        <input
+          type="text"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        {error && <p className="error">{error}</p>}
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
+}

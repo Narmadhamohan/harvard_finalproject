@@ -1,0 +1,69 @@
+<!Doctype html>
+<head>
+
+<title>Hello </title>
+</head>
+<body>
+<h1> Category wise implementation of React</h1>
+
+<ul>
+<li>
+1️⃣ User Registration
+<li>
+2️⃣ JWT Login
+</li>
+<li>
+3️⃣ Profile View / Edit
+</li>
+<li>
+4️⃣ Post a Job
+</li>
+<li>
+5️⃣ Apply for Job
+</li>
+<li>
+6️⃣ View Jobs / Applicants / Applied Jobs
+</li>
+</ul>
+
+<div> To be implemented
+Signup / Login
+
+Profile (view & edit)
+
+Job post, Apply, View jobs
+
+Mail inbox & send mail
+
+</div>
+<div>
+Folder structure: jobportal-frontend/
+├── src/
+│   ├── api/
+│   │   ├── axiosClient.js          ← base axios instance
+│   │   ├── authApi.js              ← login/signup/token refresh
+│   │   ├── profileApi.js           ← view/update user profile
+│   │   ├── jobApi.js               ← post/view/apply jobs
+│   │   └── mailApi.js              ← internal messaging
+│   ├── context/
+│   │   └── AuthContext.js          ← manage auth + tokens
+│   ├── components/
+│   │   ├── LoginForm.js
+│   │   ├── SignupForm.js
+│   │   ├── ProfileForm.js
+│   │   ├── JobList.js
+│   │   ├── JobPostForm.js
+│   │   └── MailInbox.js
+│   ├── pages/
+│   │   ├── Dashboard.js
+│   │   ├── ProfilePage.js
+│   │   └── JobDetails.js
+│   ├── App.js
+│   ├── index.js
+│   └── styles/tailwind.css
+├── package.json
+└── tailwind.config.js
+
+</div>
+
+</body>

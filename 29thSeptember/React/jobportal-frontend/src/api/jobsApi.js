@@ -1,0 +1,33 @@
+// Destination  address formation panni , send with token .
+// not a simple postman client call. but 1. exact formation of URL 2. Localstorage to give the token
+//3. check the response and  throw error or return simple json
+// this simple file is like what we do with postman client
+// this will be called by another hook with receives these data and prepares for UI display
+// also, the data for cusrsor and search to this page given by that hook
+export const fetchJobsApi = async (cursor = "", search = "") => {
+  const baseUrl = "http://127.0.0.1:8000/api/jobposts/";
+  const token = localStorage.getItem("accessToken");
+  if (!token) throw new Error("No token found");
+
+  let url = baseUrl;
+  const params = [];
+  if (cursor) params.push(`cursor=${cursor}`);
+  if (search) params.push(`search=${encodeURIComponent(search)}`);
+  if (params.length) url += `?${params.join("&")}`;
+  const response = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+    },
+  });
+
+
+    if (response.status === 401) {
+         //      alert("Please login to view jobs.");
+                    alert("Session expired. Please log in again.");
+       // localStorage.removeItem("accessToken");
+        window.location.href = "/";
+        return; 
+    }//throw new Error("Unauthorized");
+  return await response.json();
+};

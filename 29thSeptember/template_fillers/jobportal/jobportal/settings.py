@@ -48,18 +48,33 @@ INSTALLED_APPS = [
     'users',
     'communication',
    # 'jobportal',
-   'django_filters'
+    'django_filters',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',  # add this at the top
+    'django.middleware.common.CommonMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+#CORS_ALLOWED_ORIGINS = [
+#    "http://localhost:3000",
+#   "http://127.0.0.1:3000",
+#  "http://192.168.1.35:3000",   
+# ← add this line
+#]
+
+#CORS_ALLOW_CREDENTIALS = True
+#CORS_ALLOW_ALL_ORIGINS = True
+#CORS_ALLOW_HEADERS = ['*']
+#CORS_ALLOW_METHODS = ['DELETE', 'GET', 'OPTIONS', 'PATCH', 'POST', 'PUT']
+
 
 ROOT_URLCONF = 'jobportal.urls'
 
@@ -166,3 +181,12 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'no-reply@example.com'
 EMAIL_HOST_PASSWORD = 'super-secret'
 DEFAULT_FROM_EMAIL = 'no-reply@example.com'
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://192.168.1.35:3000",
+]
+
+CORS_ALLOW_CREDENTIALS = True

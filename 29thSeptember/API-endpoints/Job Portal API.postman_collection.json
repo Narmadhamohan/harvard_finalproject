@@ -1,0 +1,1183 @@
+{
+	"info": {
+		"_postman_id": "676b9eca-12ee-4f45-b96b-52887f50f92c",
+		"name": "Job Portal API",
+		"description": "API schema for Job Portal features (Signup, Login, Profile, Resume Upload)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21406993"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "Login existing user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}users/login/",
+									"host": [
+										"{{baseUrl}}users"
+									],
+									"path": [
+										"login",
+										""
+									]
+								},
+								"description": "Authenticate a user by email and password"
+							},
+							"response": [
+								{
+									"name": "Login successful",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/login/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"login",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"Login successful\",\n  \"user_id\": 1\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Signup new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"nar\",\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}users/signup/",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								"signup",
+								""
+							]
+						},
+						"description": "Register a new user with email and password"
+					},
+					"response": [
+						{
+							"name": "User created successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Signup new user",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"email\": \"narmadha1@test.com\",\n  \"password\": \"Test1@123\",\n  \"username\": \"narmadha1\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}users/",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "users Copy",
+			"item": [
+				{
+					"name": "login",
+					"item": [
+						{
+							"name": "Login existing user",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/login/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										"login",
+										""
+									]
+								},
+								"description": "Authenticate a user by email and password"
+							},
+							"response": [
+								{
+									"name": "Login successful",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json"
+											},
+											{
+												"key": "Accept",
+												"value": "application/json"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+											"options": {
+												"raw": {
+													"headerFamily": "json",
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/users/login/",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"users",
+												"login",
+												""
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"body": "{\n  \"message\": \"Login successful\",\n  \"user_id\": 1\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Signup new user",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"username\": \"nar\",\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}users/",
+							"host": [
+								"{{baseUrl}}users"
+							],
+							"path": [
+								""
+							]
+						},
+						"description": "Register a new user with email and password"
+					},
+					"response": [
+						{
+							"name": "User created successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/users/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"users",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "profiles",
+			"item": [
+				{
+					"name": "Create or update user profile",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/profiles/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profiles",
+								""
+							]
+						},
+						"description": "Add or modify user profile information"
+					},
+					"response": [
+						{
+							"name": "Profile created or updated successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/profiles/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profiles",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "view profiles",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/profiles/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"profiles",
+								""
+							]
+						},
+						"description": "Add or modify user profile information"
+					},
+					"response": [
+						{
+							"name": "Profile created or updated successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/profiles/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profiles",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "view profiles_Pagination",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMzc2NTY0LCJpYXQiOjE3NjEzNzYyNjQsImp0aSI6ImIzNjJhNTIyZTNiMDRjOTE5ZjdkYWU0NzdhMWRhMjExIiwidXNlcl9pZCI6IjEifQ.idYWM9OLQ_Nm2X4aARqQHUqMPRQ6OasBBRQE0yoqNyc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}",
+							"options": {
+								"raw": {
+									"headerFamily": "json",
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}profiles?page=2&page_size=5",
+							"host": [
+								"{{baseUrl}}profiles"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "page_size",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Profile created or updated successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}",
+									"options": {
+										"raw": {
+											"headerFamily": "json",
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/profiles/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"profiles",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "resumes",
+			"item": [
+				{
+					"name": "Upload resume file",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "multipart/form-data"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "file",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/resumes/",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"resumes",
+								""
+							]
+						},
+						"description": "Upload multiple resumes or cover letters"
+					},
+					"response": [
+						{
+							"name": "Resume uploaded successfully",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "multipart/form-data"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "file",
+											"type": "file",
+											"src": []
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/resumes/",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"resumes",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "JobPost",
+			"item": [
+				{
+					"name": "1.ViewJobs_Cursor_infinitescroll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxMzc4NTk4LCJpYXQiOjE3NjEzNzgyOTgsImp0aSI6ImM1YzVkYmFhZWM4NTQyY2M4YWE5Nzg1MDdhOWE3MDg1IiwidXNlcl9pZCI6IjEifQ.CpKfoAK3qw0FBtRS5Fm0IPSIcxGN4zNIVfAWv5C-GqU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"user\": 1,\n  \"skills\": \"Python, Django, React\",\n  \"education\": \"B.Tech in Computer Science\",\n  \"experience\": \"5 years in web development\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}jobposts?cursor=",
+							"host": [
+								"{{baseUrl}}jobposts"
+							],
+							"query": [
+								{
+									"key": "cursor",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2.applyforajob",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNDAzOTAzLCJpYXQiOjE3NjE0MDM2MDMsImp0aSI6ImU3YWEyZjkwNjkwNTRkNmQ4ODRkMzQ2MGQ0MjNhNGZiIiwidXNlcl9pZCI6IjEifQ.noz-r9QV1D64fBFQ6-FDomyYyzKQgpnF3w-b3kgrf3o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "cover_letter",
+									"value": "I'm very interested in this position",
+									"type": "text"
+								},
+								{
+									"key": "resume_file",
+									"contentType": "multipart/form-data",
+									"type": "file",
+									"src": []
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}jobposts/50/apply/",
+							"host": [
+								"{{baseUrl}}jobposts"
+							],
+							"path": [
+								"50",
+								"apply",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3.viewapplicants",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNDU5NzU0LCJpYXQiOjE3NjE0NTk0NTQsImp0aSI6IjYxYzhlNjliNzIxZTQzMDY5ODlmY2MwMjE2MGFiZjYyIiwidXNlcl9pZCI6IjEifQ.ZEWGCjR9qPnb9Z7YBAx6OGcWdNEs5r8t7W0WgBVZY4s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}jobposts/50/applicants/",
+							"host": [
+								"{{baseUrl}}jobposts"
+							],
+							"path": [
+								"50",
+								"applicants",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "viewApplied_jobs",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mail",
+			"item": [
+				{
+					"name": "internalmailSend",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNjU2Mjk2LCJpYXQiOjE3NjE2NTU5OTYsImp0aSI6ImU4ZTc0OWYxZTBmZDQwMDM5MjI3NmFjOGZmYWFlY2Q5IiwidXNlcl9pZCI6IjEifQ.FqanWSh5RaqswrK5bo3BfwiKxFkayXQCuIRFMDjO60Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipient\": 2,\r\n  \"recipient_email\": \"student1@gmail.com\",\r\n  \"subject\": \"Internal Message\",\r\n  \"body\": \"This is an internal user mail.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}mails/",
+							"host": [
+								"{{baseUrl}}mails"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "internalmailInbox",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNjU2Mjk2LCJpYXQiOjE3NjE2NTU5OTYsImp0aSI6ImU4ZTc0OWYxZTBmZDQwMDM5MjI3NmFjOGZmYWFlY2Q5IiwidXNlcl9pZCI6IjEifQ.FqanWSh5RaqswrK5bo3BfwiKxFkayXQCuIRFMDjO60Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipient\": 2,\r\n  \"recipient_email\": \"student1@gmail.com\",\r\n  \"subject\": \"Internal Message\",\r\n  \"body\": \"This is an internal user mail.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}mails/?box=inbox",
+							"host": [
+								"{{baseUrl}}mails"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "box",
+									"value": "inbox"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "internalmailIAllMails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNjU2Mjk2LCJpYXQiOjE3NjE2NTU5OTYsImp0aSI6ImU4ZTc0OWYxZTBmZDQwMDM5MjI3NmFjOGZmYWFlY2Q5IiwidXNlcl9pZCI6IjEifQ.FqanWSh5RaqswrK5bo3BfwiKxFkayXQCuIRFMDjO60Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipient\": 2,\r\n  \"recipient_email\": \"student1@gmail.com\",\r\n  \"subject\": \"Internal Message\",\r\n  \"body\": \"This is an internal user mail.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}mails/",
+							"host": [
+								"{{baseUrl}}mails"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "internalsinglemaildetails",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNzk4NzQzLCJpYXQiOjE3NjE3OTg0NDMsImp0aSI6IjNlNGY5ZmMwYzJiZTQwNjE4Y2E5NDNiNTQzY2Y4ZWYzIiwidXNlcl9pZCI6IjEifQ.RNJjcfRYoxS_JlDCFTHT8sWW1foVe0bSCI0ThuC7JpQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipient\": 2,\r\n  \"recipient_email\": \"student1@gmail.com\",\r\n  \"subject\": \"Internal Message\",\r\n  \"body\": \"This is an internal user mail.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}mails/1",
+							"host": [
+								"{{baseUrl}}mails"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "internamailsentbox",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNjU2Mjk2LCJpYXQiOjE3NjE2NTU5OTYsImp0aSI6ImU4ZTc0OWYxZTBmZDQwMDM5MjI3NmFjOGZmYWFlY2Q5IiwidXNlcl9pZCI6IjEifQ.FqanWSh5RaqswrK5bo3BfwiKxFkayXQCuIRFMDjO60Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipient\": 2,\r\n  \"recipient_email\": \"student1@gmail.com\",\r\n  \"subject\": \"Internal Message\",\r\n  \"body\": \"This is an internal user mail.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}mails/?box=sent",
+							"host": [
+								"{{baseUrl}}mails"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "box",
+									"value": "sent"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "externalsendTheMailAPI",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzYxNjU2Mjk2LCJpYXQiOjE3NjE2NTU5OTYsImp0aSI6ImU4ZTc0OWYxZTBmZDQwMDM5MjI3NmFjOGZmYWFlY2Q5IiwidXNlcl9pZCI6IjEifQ.FqanWSh5RaqswrK5bo3BfwiKxFkayXQCuIRFMDjO60Y",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"recipient\": 2,\r\n  \"recipient_email\": \"student1@gmail.com\",\r\n  \"subject\": \"Internal Message\",\r\n  \"body\": \"This is an internal user mail.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}mails/send-via-api",
+							"host": [
+								"{{baseUrl}}mails"
+							],
+							"path": [
+								"send-via-api"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "inputs",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"nar\",\n  \"email\": \"narmadha@test.com\",\n  \"password\": \"Test@123\"\n}\n\n\n\n\n\n"
+				},
+				"url": {
+					"raw": "{{baseUrl}}users/testt",
+					"host": [
+						"{{baseUrl}}users"
+					],
+					"path": [
+						"testt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Master_1.token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"nar\",\r\n  \"email\": \"narmadha@test.com\",\r\n  \"password\": \"Test@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}token/",
+					"host": [
+						"{{baseUrl}}token"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:8000/api/"
+		}
+	]
+}

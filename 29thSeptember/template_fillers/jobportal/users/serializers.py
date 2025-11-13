@@ -199,3 +199,16 @@ class ApplicantListSerializer(serializers.ModelSerializer):
             request = self.context.get('request')
             return {'file_url': request.build_absolute_uri(obj.resume.url)}
         return None
+        
+# View applied jobs
+class JobPostSimpleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobPost
+        fields = ['id', 'title', 'location', 'job_type', 'salary_range']
+
+class JobApplicationSerializer(serializers.ModelSerializer):
+    job = JobPostSimpleSerializer(read_only=True)
+
+    class Meta:
+        model = JobApplication
+        fields = ['id', 'job', 'cover_letter', 'applied_on', 'status', 'resume']

@@ -1,0 +1,84 @@
+
+1.when fetchjobs clicked?
+2.when fetchjobs clicked thrugh search, pag, filter?
+
+we fetch jobs with queried filters
+1.api
+2.api?cursor=&search=
+
+so build urls with accessories like filters
+
+
+*use `{}
+*use []
+use .push
+use length
+use join
+3. fire url with token
+3. get result and set status and data
+
+set  response'scursors,lists
+
+function zone:
+if page first loads: default above list jobs with plain url
+if page wipe and fetch with search button:
+list job with handleserach fn then fetchjobs fn:
+component htmlzone:
+
+title with card for viewljob list
+searchbar childbutton passing fun and placehlder
+    search details needed for pagination
+	cild: form , input text boxxx, butoon
+
+
+child -> form submit -> call parent formsubmit function
+How?dynamic passing / inject of fcuntion name in the component call as parmere
+
+
+Parent:
+<searchbar search="handleSearchSubmit">
+
+
+Child component
+
+Function Searchbar(passedMFunctionName){
+
+const handleChildSubmit = (e) =>{
+
+passedMFunctionName(query);
+}
+{
+<form
+onsubmit={handleChildSubmit}
+
+}
+	
+
+
+***************
+export default function SearchBar({ onSearch, placeholder = "Search..." }) {
+   
+
+<SearchBar
+        onSearch={handleSearch}
+        placeholder="Search job title, description, or poster..."
+      />
+
+Can i change export default function SearchBar({ onSearch, placeholder = "Search..." }) {
+ as export default function SearchBar({ onMySearch,placeholder = "Search..." }) {
+ 
+
+
+
+
+
+  const [searchTerm, setSearchTerm] = useState(""); // 👈 Track search term
+      if (search) params.push(`search=${encodeURIComponent(search)}`);
+
+
+
+
+
+
+
+

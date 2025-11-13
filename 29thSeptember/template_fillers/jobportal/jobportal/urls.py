@@ -29,6 +29,7 @@ from users.views import JobPostBulkUploadView
 #from users.views import MailViewSet
 from users.views import JobApplicantViewSet  
 from communication.urls import router as communication_router
+from users.views import MyAppliedJobsViewSet
 
 
 #added for bulkview
@@ -42,6 +43,8 @@ router.register(r'profiles', ProfileViewSet)
 router.register(r'jobposts', JobPostViewSet, basename='jobpost')
 #router.register(r'mails', MailViewSet, basename='mail')
 router.register(r'applications', JobApplicantViewSet, basename='job-applications')
+# view - Applied jobs
+router.register(r'applicants', MyAppliedJobsViewSet, basename='job-applicant')
 
 
 

@@ -159,7 +159,7 @@ JobApplicationViewSet — handles viewing applicants per job (and filtering/sort
         applications = job.applications.select_related('applicant').order_by('-applied_on')
         page = self.paginate_queryset(applications)
         serializer = ApplicantListSerializer(page if page is not None else applications, many=True, context={'request': request})
-        if page is not None:
+        if page is not None      :
             return self.get_paginated_response(serializer.data)
         return Response(serializer.data)
 
@@ -171,7 +171,7 @@ class JobPostViewSet(viewsets.ModelViewSet):
 
     #Task 2 - Filter and search
     filterset_fields = ['availability', 'location', 'job_type', 'user__email']
-    search_fields = ['title', 'description', 'posted_by']
+    search_fields = ['title', 'description', 'posted_on','location','job_type']
     ordering_fields = ['posted_on', 'salary_range']
     
     #Task 3 - Pagination
@@ -227,6 +227,23 @@ class JobApplicantViewSet(viewsets.ReadOnlyModelViewSet):
 
         # ✅ Return applications linked to this job
         return JobApplication.objects.filter(job=job).select_related('applicant').order_by('-applied_on')
+
+
+
+class MyAppliedJobsViewSet(viewsets.ModelViewSet):
+    queryset = JobApplication.objects.all()
+    serializer_class = JobApplicationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        # Only show applications made by the logged-in user
+        user = self.request.user
+        queryset = JobApplication.objects.filter(applicant=user)
+            # Apply additional filter if status is passed as query parameter
+        status = self.request.query_params.get('status')
+        if status:
+            queryset = queryset.objects.filter(status=status)
+        return queryset
 
 
 

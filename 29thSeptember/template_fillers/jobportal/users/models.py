@@ -43,6 +43,11 @@ class Profile(models.Model):
 # JOB POST MODEL
 # ------------------------
 class JobPost(models.Model):
+    STATUS_CHOICES = [
+        ('draft', 'Draft'),
+        ('open', 'Open'),
+        ('closed', 'Closed'),
+    ]
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_posts')
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
@@ -59,8 +64,9 @@ class JobPost(models.Model):
         ],
         default='Full Day'
     )
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='draft')  # new field
     def __str__(self):
-        return self.title
+        return f"{self.title} ({self.status})"
         
 
 #Level 1 - Token, new user reg
