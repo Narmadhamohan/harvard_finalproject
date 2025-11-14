@@ -15,6 +15,7 @@ const [prevCursor,setPrevCursor] =useState(null);
 const [loading,setLoading] = useState(false);
 const fetchJobs = async(cursor = "" , search=initialSearch) => {
     try{
+  console.log("inside the page: hook");
 
         setLoading(true);
         const data =  await fetchJobsApi(cursor, search);
@@ -32,9 +33,7 @@ const fetchJobs = async(cursor = "" , search=initialSearch) => {
 }
 
 
-useEffect( ()=> {
-fetchJobs();
-},[])
+
 
   return { jobs, loading, nextCursor, prevCursor, fetchJobs };
 };

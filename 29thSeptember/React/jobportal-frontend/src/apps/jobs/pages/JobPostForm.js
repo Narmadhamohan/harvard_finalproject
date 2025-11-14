@@ -1,12 +1,13 @@
+//apps/jobs/pages/JobPostForm
 import { useState } from "react";
-import { postJob } from "../api/jobApi";
+//import { postJob } from "..jobs/api/jobApi";
 
 export default function JobPostForm() {
   const [job, setJob] = useState({ title: "", description: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await postJob(job);
+   // await postJob(job);
     alert("Job posted successfully!");
   };
 

@@ -1,67 +1,71 @@
-import React, { useState, useEffect } from "react";
-import SearchBar from "../components/SearchBar"; // 👈 Import reusable search bar
+import React, { useState, useEffect, useRef } from "react";
+import SearchBar from "../../../components/SearchBar"; // 👈 Import reusable search bar
+import {useLocation, useNavigate } from "react-router-dom";
+import { useJobs } from "../hooks/useJobs";
+
+
+//1. set ref with useref in devbox/jobbox
+//2. set poistion by storing in sessionstorage before navigating to job detail
+//3. useeffect - key: if someone is calling not from back option, set the key in the 
+// viewjobs-loadcall and fetch usig location
+//4. then use that scroll state inside the useeffect - which loads whenever the dom  renders the page
+//5. done with navigate,location.
+// 6. how to use global jobcontext's value instead of direct usejobs
 
 export default function ViewJobs() {
+  const navigate = useNavigate();
+    const location = useLocation();
   const baseUrl = "http://127.0.0.1:8000/api/";
-  const [jobs, setJobs] = useState([]);
-  const [nextCursor, setNextCursor] = useState(null);
-  const [prevCursor, setPrevCursor] = useState(null);
-  const [loading, setLoading] = useState(false);
+  // no need of const [jobs, setJobs], cursor = useState([]); we receive these valuefrom hook
   const [searchTerm, setSearchTerm] = useState(""); // 👈 Track search term
+  const { jobs, loading, nextCursor, prevCursor, fetchJobs } = useJobs();
 
-  // ✅ Fetch jobs (supports pagination + search)
-  const fetchJobs = async (cursor = "", search = "") => {
-    try {
-      setLoading(true);
-      const token = localStorage.getItem("accessToken");
-      if (!token) {
-        alert("Please login to view jobs.");
-        window.location.href = "/";
-        return;
-      }
-
-      // Build URL dynamically for pagination + search
-      let url = `${baseUrl}jobposts/`;
-      const params = [];
-      if (cursor) params.push(`cursor=${cursor}`);
-      if (search) params.push(`search=${encodeURIComponent(search)}`);
-      if (params.length > 0) url += `?${params.join("&")}`;
-
-      const response = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (response.status === 401) {
-        alert("Session expired. Please log in again.");
-        localStorage.removeItem("accessToken");
-        window.location.href = "/";
-        return;
-      }
-
-      const data = await response.json();
-      setJobs(data.results || []);
-      setNextCursor(data.next_cursor);
-      setPrevCursor(data.previous_cursor);
-    } catch (error) {
-      console.error("Error fetching jobs:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
+  const listref = useRef(null); 
+  const scrollStateMaintain = location?.state?.scrollStateMaintain;
   // ⏱️ Load jobs on mount
+
+
+
+useEffect(() => {
+  console.log("🔥 useEffect RUNNING");
+
+  fetchJobs("", "");
+
+}, []);  // <--- IMPORTANT
+
+
   useEffect(() => {
-    fetchJobs();
-  }, []);
+  console.log("inside the page:1");
+
+    if (scrollStateMaintain){
+       const savedScrollPosition = sessionStorage.getItem("scrollpos");
+        if(savedScrollPosition && listref.current){
+            listref.current.scrollTo(0,parseInt(savedScrollPosition));
+        }
+    }
+    else {
+                  // init scroll position
+                //  listref.current.scrollTo(0,0);
+                  sessionStorage.removeItem("scrollpos")
+    }
+    fetchJobs("","");
+   // instead of above fetchjobs from usejobs, im going to call,
+   // usejobs inide jobcontext
+  },[]);
 
   // 🔎 Handle search (reusing SearchBar)
   const handleSearch = (term) => {
     setSearchTerm(term);
     fetchJobs("", term); // Fetch from page 1 with search term
   };
+
+
+const handleDetailsClick = (jobId) => {
+  // why not listref.current in 2nd arg?
+sessionStorage.setItem("scrollpos", listref.current.scrollTop);
+  navigate(`/jobs/${jobId}`, {scrollStateMaintain:true});
+
+};
 
   return (
     <div className="p-6 bg-gradient-to-b from-indigo-50 to-white min-h-screen">
@@ -78,16 +82,18 @@ export default function ViewJobs() {
       {loading ? (
         <p className="text-center text-gray-600">Loading jobs...</p>
       ) : jobs.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div ref={listref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {jobs.map((job) => (
             <div
               key={job.id}
-              className="bg-white rounded-2xl shadow-lg border border-gray-200 p-5 hover:shadow-xl transition-all duration-300"
+              // why not simple              onClick={handleDetailsClick(job.id)} // 👈 navigate to detail
+                        onClick={() => handleDetailsClick(job.id)}         
+              className="cursor-pointer bg-white rounded-2xl shadow-lg border border-gray-200 p-5 hover:shadow-2xl hover:scale-[1.02] transition-all duration-300"
             >
               <h3 className="text-xl font-semibold text-indigo-600 mb-2">
                 {job.title}
               </h3>
-              <p className="text-gray-700 mb-2">{job.description}</p>
+              <p className="text-gray-700 mb-2 line-clamp-2">{job.description}</p>
               <div className="text-gray-500 text-sm space-y-1">
                 <p>📍 {job.location}</p>
                 <p>💼 {job.job_type}</p>
@@ -136,6 +142,9 @@ export default function ViewJobs() {
         >
           Next ➡
         </button>
+        <button onClick={() => fetchJobs(nextCursor?.split("cursor=")[1], searchTerm)}>
+  Next ➡
+</button>
       </div>
     </div>
   );

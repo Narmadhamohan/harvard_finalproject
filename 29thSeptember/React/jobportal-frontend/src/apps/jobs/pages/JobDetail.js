@@ -1,5 +1,5 @@
 // src/pages/JobDetail.js
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -9,6 +9,13 @@ export default function JobDetail() {
   const [alreadyApplied, setAlreadyApplied] = useState(false);
   const [message, setMessage] = useState("");
   const token = localStorage.getItem("accessToken"); // stored from login
+  const navigate = useNavigate();
+
+  // going to generate back button
+  // making back buton could be simple NAvigate(-1) instead of fullurl
+  // then resume upload
+// then test with data :job3,apply3
+
 
   useEffect(() => {
     fetchJobDetails();
@@ -39,6 +46,8 @@ export default function JobDetail() {
     }
   };
 
+
+
   const handleApply = async () => {
     try {
       const response = await axios.post(
@@ -58,6 +67,10 @@ export default function JobDetail() {
   };
 
   if (!job) return <p>Loading...</p>;
+
+    const handleBack = () => {
+    navigate("-1", { state: { fromDetails: true } });
+  };
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow">
@@ -84,6 +97,8 @@ export default function JobDetail() {
       )}
 
       {message && <p className="mt-3 text-blue-700">{message}</p>}
+
+      <button onClick={ handleBack}> Back to Job openings</button>
     </div>
   );
 }

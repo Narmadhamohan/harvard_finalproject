@@ -1,4 +1,4 @@
-// src/context/JobsContext.js
+// src/apps/jobs/context/JobsContext.js
 import { createContext, useContext } from "react";
 import { useJobs } from "../hooks/useJobs";
 

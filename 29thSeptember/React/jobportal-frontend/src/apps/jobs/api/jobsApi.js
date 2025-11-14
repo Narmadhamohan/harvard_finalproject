@@ -10,6 +10,7 @@ const BASE_URL = "http://127.0.0.1:8000/api/";
 export const fetchJobsApi = async (cursor = "", search = "") => {
   const token = localStorage.getItem("accessToken");
   if (!token) throw new Error("No token found");
+  console.log("inside the page: ",token);
 
   let url = `${BASE_URL}jobposts/`;
   const params = [];
@@ -23,7 +24,7 @@ export const fetchJobsApi = async (cursor = "", search = "") => {
     },
   });
 
-
+  console.log("inside the page: ",response.status);
     if (response.status === 401) {
          //      alert("Please login to view jobs.");
                     alert("Session expired. Please log in again.");
@@ -37,7 +38,7 @@ export const fetchJobsApi = async (cursor = "", search = "") => {
 
 export const fetchJobDetail = async (id) => {
   const token = localStorage.getItem("accessToken");
-  const response = await fetch(`${BASE_URL}jbposts/${id}/`, {
+  const response = await fetch(`${BASE_URL}jobposts/${id}/`, {
     headers: {
       Authorization: `Bearer ${token}`,
       "Content-Type": "application/json",
@@ -49,9 +50,9 @@ export const fetchJobDetail = async (id) => {
 
 
 
-export const applyForJob = async (id, token, formData) => {
+export const applyForJob = async (id, formData) => {
   const token = localStorage.getItem("accessToken");
-  const response = await fetch(`${BASE_URL}jbposts/${id}/apply/`, {
+  const response = await fetch(`${BASE_URL}jobposts/${id}/apply/`, {
     method: "POST",
     headers: {
       Authorization: `Bearer ${token}`,

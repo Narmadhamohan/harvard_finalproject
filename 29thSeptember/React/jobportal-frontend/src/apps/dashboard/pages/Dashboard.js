@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../components/Sidebar";
-import "../theme.css";
+import Sidebar from "../../../components/Sidebar";
+import "../../../theme.css";
 
 export default function Dashboard() {
   return (
@@ -13,3 +13,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+// tod o: andle back in JobDetail.js
