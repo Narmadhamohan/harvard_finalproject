@@ -9,6 +9,7 @@ import ViewJobs from "./pages/ViewJobs"; // 👈 இந்த line சேர்�
 import JobDetail from "./pages/JobDetail"; // 👈 இந்த line சேர்க்கவும்
 
 import DashboardLayout from "./layout/DashboardLayout";
+import { JobsProvider } from "./context/JobsContext";
 
 // ✅ Protected route: only accessible if JWT exists
 function ProtectedRoute({ children }) {
@@ -34,7 +35,7 @@ function App() {
                 <DashboardLayout />
               </ProtectedRoute>
             }
-          >
+          />
 			<Route path="/index"
             element={
                 <Dashboard />
@@ -58,6 +59,10 @@ function App() {
              
             }
           />
+        </Routes>
+      <Routes>
+      <JobsProvider>
+
 		 <Route path="/view-jobs" element={
                 <ViewJobs />
               
@@ -65,10 +70,9 @@ function App() {
                
 
 		  /> {/* 👈 இதை சேர்க்கவும் */}
-   </Route>
         <Route path="/jobs/:id" element={<JobDetail />} />
-
-
+        
+      </JobsProvider>
         </Routes>
       </AuthProvider>
     </BrowserRouter>
