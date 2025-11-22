@@ -1,0 +1,66 @@
+Front-end:
+
+1. current dashboard,
+
+if profile not there -> fetch data to fill up
+if data not there, showcase incompleteprofile status
+
+if they want to edit, edit and save. need frontend +api impl.
+if they are a company, edit that form and save.
+if their profile complete, just ask gst registered, allow to proceed.
+
+
+
+right side: jobs
+No::::::if they ae a company , give that link seperately to hanlde 
+postedjobs, view applicants.
+YesIf they are job seeker -> display applied jobs.
+yes: Lookig to  hire?
+display with post a job and view posted jobs, view applicatns
+Dahboard, viewjobs -> all jobs
+Aplied jobs >
+View posted jobs -> only if they have registered as poster
+MEssage: applicants
+
+No currently - Future enhancement
+in the search bar display peope and jobs. Keep a filter as rect
+angular box, so that people can select 
+
+Code starts here:
+imissed how to find profile complete or incomplete status:
+    def profile_status(self, request):
+
+i understand if field s are missing, there should be edit button to display to edit fields.
+
+not just error message with all fields. so mostly fetchstatus is not requrired
+
+why two banners?
+Dahboard componet
+dashboard layout
+
+call 2nd api -> fetsstatus in first api /dashboard-profile
+const [status,setStats] = useSTate(null)
+
+useEffect(() => {
+
+if (!user) return;
+const loadAll = async() => {
+const profileData = await fetchDashboardByEmail(user.email)
+setProfile(profileData);
+};
+
+loadAll();
+
+
+}, [user]);
+
+
+if(!profile) return <div> Loading...</div>
+
+
+
+
+
+
+
+Feature: search bar in common. now - seperate for jobs and people

@@ -29,6 +29,7 @@ class Profile(models.Model):
         blank=True, 
         help_text="e.g., Online / Offline / Hybrid"
     )
+    profile_status = models.CharField(max_length=50, default='incomplete')
     def __str__(self):
         return f"{self.full_name or self.user.email}"
 
@@ -59,7 +60,7 @@ class JobPost(models.Model):
         max_length=50,
         choices=[
             ('Full Day', 'Full Day'),
-            ('Half Day', 'Half Day'),
+            ('Half Day', 'Half Day'),   
             ('Evening Hours', 'Evening Hours'),
         ],
         default='Full Day'

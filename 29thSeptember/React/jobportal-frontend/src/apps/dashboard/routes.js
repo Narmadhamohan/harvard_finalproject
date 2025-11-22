@@ -1,21 +1,17 @@
-import Dashboard from "./pages/Dashboard";
 import DashboardLayout from "../../layout/DashboardLayout";
-import ProfileForm from "../profile/pages/ProfileForm";
-import JobPostForm from "../jobs/pages/JobPostForm";
+import { jobRoutes } from "../jobs/jobroutes";
+import { mailRoutes } from "../mail/mailroutes";
+import { profileRoutes } from "../profile/Routes";
+import { dashboardRoutes } from "./dashboardroute";
 
-import ProtectedRoute from "../../router/ProtectedRoute";
-
-export const dashboardRoutes = [
-  {
-    element: (
-      <ProtectedRoute>
-        <DashboardLayout />
-      </ProtectedRoute>
-    ),
-    children: [
-      { path: "/index", element: <Dashboard /> },
-      { path: "/profile", element: <ProfileForm /> },
-      { path: "/post-job", element: <JobPostForm /> },
-    ],
-  },
-];
+export const dashboardParentRoute = {
+  path: "/",
+  element: <DashboardLayout />,
+  children: [
+    
+    ...jobRoutes,
+    ...mailRoutes,
+    ...profileRoutes,
+    ...dashboardRoutes,
+  ]
+};

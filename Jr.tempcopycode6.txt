@@ -1,0 +1,40 @@
+signals.py
+apps.py
+1.
+models -> profile -> complete or not?
+profile_status = models.CharField(max_length=50, default='incomplete')
+
+2. import receiver, post_Save.
+this is auto called an darguments are auto passed by framework:
+
+
+signals.py
+
+@receiver(post_save, sender=settings.Auth_user_model)
+
+def create_or_udate_user_profile(sender, instance, created, **kwargs)
+
+	if creaed:
+		Profile.objects.create(user=instance)
+
+3.this is started in the initial start of server.
+to avoaid circular import, nested import based on condition
+apps.py
+
+from django.apps import AppConfig
+
+class myAppConfig(AppConfig):
+	name = 'jobportal'
+	def ready(self):
+	 import jobPortal.signals
+4. settings.py
+
+installed_apps = [
+
+...
+'jobportal.myAppConfig',
+]
+
+
+
+

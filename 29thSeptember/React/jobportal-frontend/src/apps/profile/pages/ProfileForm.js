@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import { getProfile, updateProfile } from "./profileApi";
+import { getProfile, updateProfile } from "../api/ProfileApi";
 
 export default function ProfileForm() {
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    getProfile().then((res) => setProfile(res.data));
+    //getProfile().then((res) => setProfile(res.data));
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await updateProfile(profile);
+   // await updateProfile(profile);
     alert("Profile updated!");
   };
 

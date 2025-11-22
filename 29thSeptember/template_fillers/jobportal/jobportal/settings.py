@@ -50,6 +50,7 @@ INSTALLED_APPS = [
    # 'jobportal',
     'django_filters',
     'corsheaders',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [

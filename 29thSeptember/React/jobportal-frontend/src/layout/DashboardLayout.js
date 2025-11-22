@@ -5,6 +5,7 @@ import { AuthContext } from "../context/AuthContext";
 export default function DashboardLayout() {
   const { user, handleLogout } = useContext(AuthContext);
 
+
   return (
     <div className="flex min-h-screen bg-gray-100">
       {/* Sidebar */}
@@ -13,6 +14,8 @@ export default function DashboardLayout() {
         <nav className="flex flex-col space-y-3">
           <Link to="/dashboard" className="hover:text-yellow-300">Dashboard</Link>
           <Link to="/view-jobs" className="hover:text-yellow-300">View Jobs</Link>
+          <Link to="/profile/profiles-list" className="hover:text-yellow-300">Profile</Link>
+           <Link to="/view-Message" className="hover:text-yellow-300">Message</Link>
           <Link to="/home" className="hover:text-yellow-300">Home</Link>
         </nav>
         <button

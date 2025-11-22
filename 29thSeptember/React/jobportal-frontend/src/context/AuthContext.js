@@ -20,7 +20,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("refreshToken", refresh);
 
       setUser({ email });
-      navigate("/index"); // ✅ redirect after login success
+      navigate("/"); // ✅ redirect after login success
     } catch (error) {
       alert("Invalid credentials. Please check your email and password.");
     }

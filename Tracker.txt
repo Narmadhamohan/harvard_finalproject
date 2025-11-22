@@ -1,0 +1,24 @@
+Series: 12,13,14
+mail, viewapplied jobs, job post status tracker
+
+Level 4:
+Front end -> Registration pages
+Index and urls
+hide and show based on access or roles or conditions
+
+
+Next aim:
+content cleaning, mena,median,mode
+quantum coputing with AI
+Making django code possible with 30 minutes
+Angular learning, react learning - patterns liek how class name and syntax differs
+
+tempcopycode5 - now proper prompt
+next - better
+5 is important for frontend+backend code
+
+code6 - better prompt for dashboard, implemented version
+code7 - how to learn django
+code 8 - how to tackle current scenario
+
+

@@ -68,6 +68,8 @@ class UserViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_201_CREATED
             )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    
 
 
 class ProfileViewSet(viewsets.ModelViewSet):
@@ -126,6 +128,33 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
         serializer = MailSerializer(mail, context={'request': request})
         return Response(serializer.data, status=status.HTTP_201_CREATED)
+        
+    @action(detail=False, methods=['get'], url_path='dashboard-profile')
+    def my_profile(self, request):
+        Profile.objects.get_or_create(user=request.user)
+
+        #auto-update status
+        if not (profile.full_name and profile.skills and profile.location):
+            profile.profile_Status = "incomplete"
+        else:
+            profile.profile_status = "complete"
+
+        profile.save()
+        serializer = ProfileSerializer(profile)
+        return Response(serializer.data)
+            
+    @action(detail=False, methods=['get'], url_path='status', permission_classes=[IsAuthenticated])
+    def profile_status(self, request):
+        profile = get_object_or_404(Profile, user=request.user)
+
+        required_fields = ['full_name', 'location', 'skills']
+        missing = [f for f in required_fields if not getattr(profile, f)]
+
+        return Response({
+            "is_complete": len(missing) == 0,
+            "missing_fields": missing
+        })
+
 
 """class ResumeViewSet(viewsets.ModelViewSet):
     queryset = Resume.objects.all()
@@ -197,9 +226,20 @@ class JobPostViewSet(viewsets.ModelViewSet):
 
         serializer = JobApplicationSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
-            app = serializer.save(job=job)
+            app = serializer.save(job=job,applicant=user)
             return Response(JobApplicationSerializer(app, context={'request': request}).data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+    # to display the lis of jobs , based on who posted items
+    
+    @action(detail=False, methods=['get'], permission_classes=[IsAuthenticated], url_path='my-posts')
+    def my_posted_jobs(self,request):    
+        user = request.user
+        queryset = JobPost.objects.filter(user=user).order_by('-posted_on')
+        page = self.paginate_queryset(queryset)
+        serializer = JobPostSerializer(page if page else queryset, many=True)
+        return self.get_paginated_response(serializer.data) if page else Response(serializer.data)
+   
 
 #Level 3
 class JobApplicantViewSet(viewsets.ReadOnlyModelViewSet):

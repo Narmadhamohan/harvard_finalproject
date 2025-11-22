@@ -1,0 +1,25 @@
+1. design api endpoint
+
+this should get profile object. if profile is not there, jus tdisplay the form to fill
+else message.
+
+/api/profiles/dashboard-profile
+
+2. create plain entry in profile table.
+
+@action(detail=False, methods=['get'], url_path='dashboard-profile')
+def my_profile(self, request):
+
+Profile.objects.get_or_create(user=request.user)
+
+#auto-update status
+if not (profile.full_name and profile.skills and profile.location):
+	profile.profile_Status = "incomplete"
+else:
+	profile.profile_status = "complete"
+
+profile.save()
+
+
+serializer = ProfileSerializer(profile)
+return Response(serializer.data)

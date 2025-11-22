@@ -8,25 +8,23 @@ export default function JobDetail() {
   const [job, setJob] = useState(null);
   const [alreadyApplied, setAlreadyApplied] = useState(false);
   const [message, setMessage] = useState("");
-  const token = localStorage.getItem("accessToken"); // stored from login
+  const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
 
-  // going to generate back button
-  // making back buton could be simple NAvigate(-1) instead of fullurl
-  // then resume upload
-// then test with data :job3,apply3
-
+  const [resumeFile, setResumeFile] = useState(null);
+  const [coverLetter, setCoverLetter] = useState("");
 
   useEffect(() => {
     fetchJobDetails();
     checkIfApplied();
-  }, [id]);
+  },[]);
 
   const fetchJobDetails = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/jobposts/${id}/`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/jobposts/${id}/`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       setJob(response.data);
     } catch (error) {
       console.error("Error fetching job details:", error);
@@ -35,9 +33,10 @@ export default function JobDetail() {
 
   const checkIfApplied = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/api/applicants/", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "http://127.0.0.1:8000/api/applicants/",
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       const appliedJobs = response.data.results || response.data;
       const applied = appliedJobs.some((app) => app.job === parseInt(id));
       setAlreadyApplied(applied);
@@ -46,15 +45,32 @@ export default function JobDetail() {
     }
   };
 
-
-
+  // --------------------------
+  // APPLY WITH FILE UPLOAD
+  // --------------------------
   const handleApply = async () => {
+    if (!resumeFile) {
+      setMessage("Please upload your resume.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("resume", resumeFile);
+    formData.append("cover_letter", coverLetter);
+    formData.append("job", id);
+
     try {
       const response = await axios.post(
         `http://127.0.0.1:8000/api/jobposts/${id}/apply/`,
-        {},
-        { headers: { Authorization: `Bearer ${token}` } }
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
+
       setMessage("Successfully applied!");
       setAlreadyApplied(true);
     } catch (error) {
@@ -68,8 +84,13 @@ export default function JobDetail() {
 
   if (!job) return <p>Loading...</p>;
 
-    const handleBack = () => {
-    navigate("-1", { state: { fromDetails: true } });
+  const handleBack = () => {
+    /* navigate(-1,{
+  state: { scrollStateMaintain: true }
+}); // Correct usage*/
+sessionStorage.setItem("scrollStateMaintain",true);
+//navigate("/view-jobs", { state: { scrollStateMaintain: true } });
+navigate(-1);
   };
 
   return (
@@ -88,17 +109,46 @@ export default function JobDetail() {
           You have already applied for this job.
         </p>
       ) : (
-        <button
-          onClick={handleApply}
-          className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
-        >
-          Apply Now
-        </button>
+        <>
+          {/* Resume Upload */}
+          <div className="mt-4">
+            <label className="font-semibold">Upload Resume (PDF/Doc):</label>
+            <input
+              type="file"
+              className="block border p-2 mt-1"
+              onChange={(e) => setResumeFile(e.target.files[0])}
+            />
+          </div>
+
+          {/* Cover Letter */}
+          <div className="mt-4">
+            <label className="font-semibold">Cover Letter (optional):</label>
+            <textarea
+              rows="4"
+              className="w-full border p-2 mt-1"
+              placeholder="Write your cover letter"
+              value={coverLetter}
+              onChange={(e) => setCoverLetter(e.target.value)}
+            />
+          </div>
+
+          <button
+            onClick={handleApply}
+            className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 mt-4"
+          >
+            Apply Now
+          </button>
+        </>
       )}
 
       {message && <p className="mt-3 text-blue-700">{message}</p>}
 
-      <button onClick={ handleBack}> Back to Job openings</button>
+      <button
+        onClick={handleBack}
+        className="mt-6 bg-gray-200 px-4 py-2 rounded"
+      >
+        Back to Job openings
+      </button>
     </div>
   );
 }

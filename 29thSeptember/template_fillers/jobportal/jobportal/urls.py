@@ -38,7 +38,7 @@ from users.views import MyAppliedJobsViewSet
 
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'profiles', ProfileViewSet)
+router.register(r'profiles', ProfileViewSet, basename='profiles')
 #router.register(r'resumes', ResumeViewSet)  
 router.register(r'jobposts', JobPostViewSet, basename='jobpost')
 #router.register(r'mails', MailViewSet, basename='mail')
