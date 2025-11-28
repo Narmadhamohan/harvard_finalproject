@@ -165,7 +165,30 @@ class ProfileViewSet(viewsets.ModelViewSet):
             return Response(serializer.data)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    # ❌ Block default create (POST /api/profiles/)
+    def create(self, request, *args, **kwargs):
+        return Response(
+            {"error": "Use /api/profiles/submit/"},
+            status=status.HTTP_400_BAD_REQUEST
+        )
 
+    # ⭐ Main Profile API — create/update in one place
+    @action(detail=False, methods=['post'], url_path="submit")
+    def submit_profile(self, request):
+
+        profile, created = Profile.objects.get_or_create(user=request.user)
+
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            serializer.save(user=request.user)
+            return Response({
+                "message": "Profile saved successfully",
+                "created": created,
+                "profile": serializer.data
+            })
+
+        return Response(serializer.errors, status=400)
 
 
 """class ResumeViewSet(viewsets.ModelViewSet):
