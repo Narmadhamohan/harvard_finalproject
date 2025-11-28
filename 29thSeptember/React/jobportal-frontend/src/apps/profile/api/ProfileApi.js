@@ -10,6 +10,13 @@ export const authAxios = axios.create({
 baseURL : BASE_URL,
 });
 
+
+const fetchProfileStatus = async () => {
+  const res = await authAxios.get("profiles/status/");
+  return res.data;
+};
+
+
 // 🟦 Automatically attach token for every request
 authAxios.interceptors.request.use((config) => {
 const token = localStorage.getItem('accessToken');

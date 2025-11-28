@@ -7,12 +7,12 @@
 
 const BASE_URL = "http://127.0.0.1:8000/api/";
 
-export const fetchJobsApi = async (cursor = "", search = "") => {
+export const fetchJobsApi = async (cursor = "", search = "",url) => {
   const token = localStorage.getItem("accessToken");
   if (!token) throw new Error("No token found");
   console.log("inside the page: ",token);
 
-  let url = `${BASE_URL}jobposts/`;
+  //let url = `${BASE_URL}jobposts/`;
   const params = [];
   if (cursor) params.push(`cursor=${cursor}`);
   if (search) params.push(`search=${encodeURIComponent(search)}`);
@@ -62,3 +62,53 @@ export const applyForJob = async (id, formData) => {
   const data = await response.json();
   return { ok: response.ok, data };
 };
+
+export const fetchMyApplication = async () => {
+  const token = localStorage.getItem("accessToken");
+  const response = await fetch(`${BASE_URL}applicants`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  });
+  const data = await response.json();
+  return { ok: response.ok, data };
+};
+
+export const postJob = async (formData) => {
+  const token = localStorage.getItem("accessToken");
+  const response = await fetch(`${BASE_URL}jobposts/`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+    body: formData,
+  });
+  const data = await response.json();
+  return { ok: response.ok, data };
+};
+
+{/* below find postman url of posted jobs list of the loggedin recruiter*/}
+export const managePostedJobs = async () => {
+  const token = localStorage.getItem("accessToken");
+  const response = await fetch(`${BASE_URL}jobposts/my-posts`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  });
+  const data = await response.json();
+  return { ok: response.ok, data };
+};
+export const manageApplicants =  async () => {
+  const token = localStorage.getItem("accessToken");
+  const response = await fetch(`${BASE_URL}jobposts/{id}applicants`, {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  });
+  const data = await response.json();
+  return { ok: response.ok, data };
+};
+

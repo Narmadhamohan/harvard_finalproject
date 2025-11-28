@@ -12,7 +12,7 @@ import { useJobs } from "../hooks/useJobs";
 //5. done with navigate,location.
 // 6. how to use global jobcontext's value instead of direct usejobs
 
-export default function ViewJobs() {
+export default function ManageJobs() {
   const navigate = useNavigate();
     const location = useLocation();
   const BASE_URL = "http://127.0.0.1:8000/api/";
@@ -29,7 +29,7 @@ export default function ViewJobs() {
 
 // 1️⃣ When component loads, fetch jobs
 useEffect(() => {
-    let url = `${BASE_URL}jobposts/`;
+    let url = `${BASE_URL}jobposts/my-posts`;
   fetchJobs("", "",url);
 }, []);
 
@@ -61,7 +61,7 @@ useEffect(() => {
 const handleDetailsClick = (jobId) => {
   // why not listref.current in 2nd arg?
 sessionStorage.setItem("scrollpos", listref.current.scrollTop);
-  navigate(`/jobs/${jobId}`, {scrollStateMaintain:true});
+  navigate(`/posted-jobs/${jobId}`, {scrollStateMaintain:true});
 
 };
 

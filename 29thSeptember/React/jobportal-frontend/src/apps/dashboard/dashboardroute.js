@@ -5,6 +5,6 @@ export const dashboardRoutes = [
     path: "dashboard",
     element: ( <Dashboard /> ),
   },
-
+  
 ];
 

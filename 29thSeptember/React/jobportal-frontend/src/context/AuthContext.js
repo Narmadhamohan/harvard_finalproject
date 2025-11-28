@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import axiosClient from "../api/axiosClient";
 import { useNavigate } from "react-router-dom";
 
@@ -7,6 +7,16 @@ export const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+
+    // ⭐ Restore user from localStorage when app starts¶
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    const email = localStorage.getItem("userEmail");
+
+    if (token && email) {
+      setUser({ email });
+    }
+  }, []);
 
   const handleLogin = async (email, password) => {
     try {
@@ -18,9 +28,10 @@ export const AuthProvider = ({ children }) => {
 
       localStorage.setItem("accessToken", access);
       localStorage.setItem("refreshToken", refresh);
+      localStorage.setItem("user", email); // ⭐ Save for later reload¶
 
       setUser({ email });
-      navigate("/"); // ✅ redirect after login success
+      navigate("/dashboard"); // ✅ redirect after login success
     } catch (error) {
       alert("Invalid credentials. Please check your email and password.");
     }
@@ -29,7 +40,7 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.clear();
     setUser(null);
-    navigate("/");
+    navigate("/login");
   };
 
   return (

@@ -6,6 +6,8 @@ export const authAxios = axios.create({
 baseURL : BASE_URL,
 });
 
+
+
 // 🟦 Automatically attach token for every request
 authAxios.interceptors.request.use((config) => {
 const token = localStorage.getItem('accessToken');
@@ -21,7 +23,7 @@ return config;
 // ---------------------------------------
 // 🔹 GET profile completion status
 // ---------------------------------------
-const fetchProfileStatus = async () => {
+export const fetchProfileStatus = async () => {
   const res = await authAxios.get("profiles/status/");
   return res.data;
 };
@@ -50,3 +52,25 @@ export const fetchDashboardByEmail = async (email) => {
 
   }
 };
+
+//Save the edit version of dashboard profile
+export async function updateProfile(data) {
+  const token = localStorage.getItem("token");
+
+  const res = await fetch("/api/profiles/update/", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(data),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to update profile");
+  }
+
+  return await res.json();
+}
+
+

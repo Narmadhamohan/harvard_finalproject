@@ -14,9 +14,16 @@ export default function DashboardLayout() {
         <nav className="flex flex-col space-y-3">
           <Link to="/dashboard" className="hover:text-yellow-300">Dashboard</Link>
           <Link to="/view-jobs" className="hover:text-yellow-300">View Jobs</Link>
-          <Link to="/profile/profiles-list" className="hover:text-yellow-300">Profile</Link>
+          <Link to="/profiles/profiles-list" className="hover:text-yellow-300"> Connect to Experts</Link>
            <Link to="/view-Message" className="hover:text-yellow-300">Message</Link>
           <Link to="/home" className="hover:text-yellow-300">Home</Link>
+          {/* Draw new links as like outline */}
+          <Link to="/my-applications" className="hover:text-yellow-300">
+            My Applications
+          </Link>
+          <Link to="/looking-to-hire" className="hover:text-yellow-100">
+            Looking to Hire
+          </Link>
         </nav>
         <button
           onClick={handleLogout}
@@ -31,6 +38,10 @@ export default function DashboardLayout() {
         {/* Navbar */}
         <header className="bg-white shadow p-4 flex justify-between items-center">
           <h1 className="text-xl font-semibold text-gray-700">Welcome, {user?.username}</h1>
+           {/* NEW TOP NAV MESSAGE LINK   */}
+          <Link to="/view-message" className="text-blue-700 font-semibold">
+            Messages
+          </Link>
         </header>
 
         {/* Page Content */}

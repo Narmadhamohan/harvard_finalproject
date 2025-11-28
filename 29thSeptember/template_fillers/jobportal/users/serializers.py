@@ -27,7 +27,15 @@ class JobPostSerializer(serializers.ModelSerializer):
         model = JobPost
         #remove field with exclude option
        # fields = ['title', 'description', 'location', 'salary_range', 'job_type']
-        exclude = ['user']  # 🔹 Same reason — handled in UserSerializer.create()
+        #commit second time
+        #exclude = ['user']  # 🔹 Same reason — handled in UserSerializer.create()
+        fields = [
+            'id', 'user', 'company_name', 'title', 'description',
+            'location', 'posted_on', 'salary_range', 'job_type',
+            'availability', 'status'
+        ]
+        read_only_fields = ['user', 'posted_on']
+
 
 
 """ class UserSerializer(serializers.ModelSerializer):
@@ -88,10 +96,6 @@ class SignupSerializer(serializers.ModelSerializer):
         
 from .models import JobPost
 
-class JobPostSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = JobPost
-        fields = '__all__'
 
 class JobPostBulkSerializer(serializers.Serializer):
     job_posts = JobPostSerializer(many=True)

@@ -21,4 +21,18 @@ code6 - better prompt for dashboard, implemented version
 code7 - how to learn django
 code 8 - how to tackle current scenario
 
+code 9 - Drawing the layout
+1.Dashoard layut, route, new pages
+
+Next, view applied jobs -
+message the expert
+job post, close the job  post
+code 10 - important
+Flow -> my applied job fetch, display -> job detail in grey mode
+
+
+Category 1: Fresh jobs
+Category 2: Applied jobs
+Category 3: posted jobs
+
 

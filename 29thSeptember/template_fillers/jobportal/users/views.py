@@ -13,7 +13,7 @@ from rest_framework import status
 #below one added for user bulk load
 from django.contrib.auth import get_user_model
 from rest_framework.permissions import IsAdminUser
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import JSONParser,MultiPartParser, FormParser
 
 #below one added for job post bulk
 from .serializers import JobPostBulkSerializer
@@ -131,11 +131,11 @@ class ProfileViewSet(viewsets.ModelViewSet):
         
     @action(detail=False, methods=['get'], url_path='dashboard-profile')
     def my_profile(self, request):
-        Profile.objects.get_or_create(user=request.user)
-
+        profile, created =Profile.objects.get_or_create(user=request.user)    
+               
         #auto-update status
         if not (profile.full_name and profile.skills and profile.location):
-            profile.profile_Status = "incomplete"
+            profile.profile_status = "incomplete"
         else:
             profile.profile_status = "complete"
 
@@ -154,6 +154,18 @@ class ProfileViewSet(viewsets.ModelViewSet):
             "is_complete": len(missing) == 0,
             "missing_fields": missing
         })
+        
+    @action(detail=False, methods=['put'], permission_classes=[IsAuthenticated], url_path='update')
+    def update_my_profile(self, request):
+        profile = get_object_or_404(Profile, user=request.user)
+
+        serializer = ProfileSerializer(profile, data=request.data, partial=True)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 
 """class ResumeViewSet(viewsets.ModelViewSet):
@@ -208,8 +220,13 @@ class JobPostViewSet(viewsets.ModelViewSet):
 
     #Level 3
     #Task 1:
-    parser_classes = [MultiPartParser, FormParser]  # 👈 Allow file uploads
-
+    parser_classes = [JSONParser, MultiPartParser, FormParser]  # 👈 Allow file uploads
+    
+    #Level 4
+    permission_classes = [IsAuthenticated]
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+    
     @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated], url_path='apply')
     def apply(self, request, pk=None):
         job = self.get_object()
@@ -278,6 +295,7 @@ class MyAppliedJobsViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         # Only show applications made by the logged-in user
         user = self.request.user
+        print(f"user: {user}")
         queryset = JobApplication.objects.filter(applicant=user)
             # Apply additional filter if status is passed as query parameter
         status = self.request.query_params.get('status')

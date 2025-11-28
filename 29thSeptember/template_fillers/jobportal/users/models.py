@@ -49,6 +49,7 @@ class JobPost(models.Model):
         ('open', 'Open'),
         ('closed', 'Closed'),
     ]
+    company_name = models.CharField(max_length=255, blank=True)  # 👈 NEW FIELD
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='job_posts')
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)

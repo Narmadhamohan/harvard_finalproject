@@ -12,6 +12,6 @@ export const profileRoutes = [
   {
     path: "profiles/:id",
     element: ( <ProfileDetail /> ),
-  },
+  }
 ];
 
