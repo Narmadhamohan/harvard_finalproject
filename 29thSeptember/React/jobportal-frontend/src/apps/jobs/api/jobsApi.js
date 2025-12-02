@@ -77,15 +77,23 @@ export const fetchMyApplication = async () => {
 
 export const postJob = async (formData) => {
   const token = localStorage.getItem("accessToken");
+  try{
   const response = await fetch(`${BASE_URL}jobposts/`, {
     method: "POST",
     headers: {
+      // added JSON.stringify instead of palin js
+      // added cotenttype with double quotes for solving queryparam -plain js in url
+    "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: formData,
+    body: JSON.stringify(formData)
+,
   });
   const data = await response.json();
-  return { ok: response.ok, data };
+  return { ok: response.ok, status: response.status, data };
+}catch(error){
+  return {ok: false, status: 0, data: null};
+}
 };
 
 {/* below find postman url of posted jobs list of the loggedin recruiter*/}
@@ -111,4 +119,5 @@ export const manageApplicants =  async () => {
   const data = await response.json();
   return { ok: response.ok, data };
 };
+
 

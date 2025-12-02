@@ -1,5 +1,4 @@
 import ProfileDetail from "./pages/ProfileDetail";
-import ProfileForm from "./pages/ProfileForm";
 //import ChangePassword from "./pages/ChangePassword";
 //import ViewProfiles from "./pages/viewProfiles";
 import ProfileList from "./pages/ProfileList";

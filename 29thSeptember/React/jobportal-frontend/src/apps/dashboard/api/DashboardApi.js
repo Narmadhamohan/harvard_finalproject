@@ -54,14 +54,16 @@ export const fetchDashboardByEmail = async (email) => {
 };
 
 //Save the edit version of dashboard profile
-export async function updateProfile(data) {
-  const token = localStorage.getItem("token");
 
-  const res = await fetch("/api/profiles/update/", {
-    method: "PUT",
+export async function updateProfile(data) {
+  console.log("in save API: ",data);
+  const accessToken = localStorage.getItem("accessToken");
+  const url = BASE_URL+"profiles/submit/";
+  const res = await fetch(url, {
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify(data),
   });

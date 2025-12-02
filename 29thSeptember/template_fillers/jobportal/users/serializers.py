@@ -32,9 +32,9 @@ class JobPostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'user', 'company_name', 'title', 'description',
             'location', 'posted_on', 'salary_range', 'job_type',
-            'availability', 'status'
+            'availability', 'status','posted_on'
         ]
-        read_only_fields = ['user', 'posted_on']
+        read_only_fields = ['id','user', 'posted_on']
 
 
 

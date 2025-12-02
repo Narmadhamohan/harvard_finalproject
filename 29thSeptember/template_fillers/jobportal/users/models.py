@@ -20,9 +20,9 @@ class Profile(models.Model):
     skills = models.TextField(blank=True)
     education = models.TextField(blank=True)
     experience = models.TextField(blank=True)
-    # added later for bulk upload
-    location = models.CharField(max_length=150, blank=True)
-    full_name = models.CharField(max_length=200, blank=True)
+    phone_number = models.CharField(max_length=100, blank=True)
+    company_name = models.CharField(max_length=500, blank=True)
+    description = models.CharField(max_length=700, blank=True)
     # added to know online or offline trainer - i future, this will be checkbox field - question
     preferred_mode = models.CharField(
         max_length=200, 

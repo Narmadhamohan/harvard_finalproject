@@ -39,3 +39,18 @@ code 12:
 Forms submission.
 code 13:
 api profile form submits
+
+code 14:
+validation
+
+Today:
+01-12-2025
+1. message
+2. applicants -> view - default
+3. logout care
+4. if session out, give message
+5. Validation
+require in html, if condition in react, serializer validation
+models.py 
+
+after post job -> whihc page?

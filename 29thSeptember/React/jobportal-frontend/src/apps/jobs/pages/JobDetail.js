@@ -102,7 +102,7 @@ navigate(-1);
       <p><strong>Salary:</strong> {job.salary_range}</p>
       <p className="my-4">{job.description}</p>
 
-      {job.status !== "active" ? (
+      {job.status !== "active" || "draft" || "open" ? (
         <p className="text-red-600 font-semibold">This job is closed.</p>
       ) : alreadyApplied ? (
         <p className="text-green-600 font-semibold">
