@@ -13,9 +13,10 @@ export const AuthProvider = ({ children }) => {
 
   // restore user on app start
   useEffect(() => {
-    const email = localStorage.getItem("user");
+   //
+    const storedUser = localStorage.getItem("user");
     const token = localStorage.getItem("accessToken");
-    if (email && token) setUser({ email });
+    if (storedUser) setUser(JSON.parse(storedUser));
   }, []);
 
   // login: gets tokens and stores user
@@ -24,10 +25,27 @@ export const AuthProvider = ({ children }) => {
     const { access, refresh } = res.data;
     localStorage.setItem("accessToken", access);
     localStorage.setItem("refreshToken", refresh);
-    localStorage.setItem("user", email);
-    setUser({ email });
+    //localStorage.setItem("user", email);
+    //setUser({ email, accessToken: access });
+
+     // ⬇️ Added at the last for chat purpose - Call API to get logged-in user details
+  const userRes = await axiosClient.get("users/me/", {
+    headers: { Authorization: `Bearer ${access}` },
+  });
+  const fullUser = {
+    id: userRes.data.id,
+    username: userRes.data.username,
+    email: userRes.data.email,
+    accessToken: access,
+  };
+ // ⬇️ Save
+  localStorage.setItem("user", JSON.stringify(fullUser));
+  setUser(fullUser);
+  // Closing here**************
+
     navigate("/dashboard");
   };
+ 
 
   // logout: clear storage and redirect
   const logout = () => {

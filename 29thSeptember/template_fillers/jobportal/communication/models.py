@@ -9,7 +9,7 @@ class Mail(models.Model):
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, 
         related_name='received_mails', null=True, blank=True
     )
-    recipient_email = models.EmailField()
+    recipient_email = models.EmailField() 
     subject = models.CharField(max_length=255)
     body = models.TextField()
     sent_on = models.DateTimeField(auto_now_add=True)

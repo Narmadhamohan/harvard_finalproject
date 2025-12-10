@@ -18,7 +18,7 @@ class MailViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         user = self.request.user
         box = self.request.query_params.get('box', 'inbox')  # default inbox
-
+        print(f"User {user}" )
         if box == 'sent':
             return Mail.objects.filter(sender=user).order_by('-sent_on')
         return Mail.objects.filter(recipient=user).order_by('-sent_on')
@@ -30,7 +30,9 @@ class MailViewSet(viewsets.ModelViewSet):
         recipient_email = serializer.validated_data.get('recipient_email')
 
         mail = serializer.save(sender=sender)
-
+        print("validated:", serializer.validated_data)
+        print("REQUEST.DATA:", self.request.data)
+        
         # 🔹 Determine mail type
         UserModel = get_user_model()
         if recipient:

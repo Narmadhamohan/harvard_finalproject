@@ -6,12 +6,20 @@ from django.conf import settings
 #User = settings.AUTH_USER_MODEL
 #You can define nested serializers so that one JSON request can create all linked records.
 
+class UserMiniSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "email"]
 
 class ProfileSerializer(serializers.ModelSerializer):
+    user = UserMiniSerializer(read_only=True)
+
     class Meta:
         model = Profile
+        fields = "__all__"
+
        ## ✅ remove 'fields' option with exclude,    fields = '__all__'
-        exclude = ['user']  # 🔹 Do not expect 'user' field from JSON input
+        # exclude = ['user']  # 🔹 Do not expect 'user' field from JSON input
 
 
 """class ResumeSerializer(serializers.ModelSerializer):

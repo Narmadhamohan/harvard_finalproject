@@ -1,6 +1,6 @@
 import { Outlet, Link } from "react-router-dom";
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+import { AuthContext } from "../context/AuthProvider";
 
 export default function DashboardLayout() {
   const { user, handleLogout } = useContext(AuthContext);
@@ -18,9 +18,6 @@ export default function DashboardLayout() {
            <Link to="/view-Message" className="hover:text-yellow-300">Message</Link>
           <Link to="/home" className="hover:text-yellow-300">Home</Link>
           {/* Draw new links as like outline */}
-          <Link to="/my-applications" className="hover:text-yellow-300">
-            My Applications
-          </Link>
           <Link to="/looking-to-hire" className="hover:text-yellow-100">
             Looking to Hire
           </Link>

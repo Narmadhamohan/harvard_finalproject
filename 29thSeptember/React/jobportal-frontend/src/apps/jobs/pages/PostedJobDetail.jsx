@@ -1,6 +1,7 @@
 // src/pages/JobDetail.js
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { AuthContext } from "../../../context/AuthProvider";
 import axios from "axios";
 
 export default function JobDetail() {
@@ -13,11 +14,38 @@ export default function JobDetail() {
 
   const [resumeFile, setResumeFile] = useState(null);
   const [coverLetter, setCoverLetter] = useState("");
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     fetchJobDetails();
     //checkIfClosed();
   },[]);
+useEffect(() => {
+  if (job) {
+    console.log("JOB UPDATED:", job);
+  }
+  console.log("user details from context: ", user);
+}, [job]);
+
+const closeJob = async () => {
+  try {
+    const response = await axios.post(
+      `http://127.0.0.1:8000/api/jobposts/${id}/close/`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+    );
+
+    setJob(prev => ({ ...prev, status: "closed" }));
+    setMessage("Job closed successfully!");
+
+  } catch (error) {
+    console.error("Error closing job:", error);
+    setMessage("Failed to close job.");
+  }
+};
+
 
   const fetchJobDetails = async () => {
     try {
@@ -26,6 +54,7 @@ export default function JobDetail() {
         { headers: { Authorization: `Bearer ${token}` } }
       );
       setJob(response.data);
+      console.log("job detail: ",job);
     } catch (error) {
       console.error("Error fetching job details:", error);
     }
@@ -39,7 +68,6 @@ export default function JobDetail() {
   const fetchApplicants = async () => {
 
     try {
-        {/* How these details to be displayed? */}
 
       const response = await axios.get(
         `http://127.0.0.1:8000/api/jobposts/${id}/applicants/`,
@@ -86,6 +114,12 @@ navigate(-1);
    
       {message && <p className="mt-3 text-blue-700">{message}</p>}
 
+{
+  job.user === user.id && job.status !="closed" && (
+    <button onClick={closeJob}     className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
+>Close Job</button>
+  )
+}
       <button
         onClick={handleBack}
         className="mt-6 bg-gray-200 px-4 py-2 rounded"

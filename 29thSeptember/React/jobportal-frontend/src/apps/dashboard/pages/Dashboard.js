@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import "../../../theme.css";
 import { fetchDashboardByEmail, fetchProfileStatus, updateProfile } from "../api/DashboardApi";
-import { AuthContext } from "../../../context/AuthContext";
+import { AuthContext } from "../../../context/AuthProvider";
 
 export default function Dashboard() {
   const { user } = useContext(AuthContext);

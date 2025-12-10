@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { fetchMyApplication } from "../api/jobsApi";
 export default function MyApplications(){
     const [applications, setApplications] = useState([])

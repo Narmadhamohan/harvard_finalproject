@@ -54,6 +54,12 @@ class UserViewSet(viewsets.ModelViewSet):
             return Response({'message': 'Login successful', 'user_id': user.id})
         return Response({'error': 'Invalid credentials'}, status=400)
 
+    @action(detail=False, methods=["get"], url_path="me", permission_classes=[IsAuthenticated])
+    def me(self, request):
+        #serializer = self.get_serializer(request.user)
+        from .serializers import UserMiniSerializer
+        serializer = UserMiniSerializer(request.user, context={'request': request})
+        return Response(serializer.data)
 #POST /api/users/signup/
     
     @action(detail=False, methods=['post'], url_path='signup',  permission_classes=[permissions.AllowAny])
@@ -128,7 +134,9 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
         serializer = MailSerializer(mail, context={'request': request})
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-        
+    
+
+    
     @action(detail=False, methods=['get'], url_path='dashboard-profile')
     def my_profile(self, request):
         profile, created =Profile.objects.get_or_create(user=request.user)    
@@ -280,6 +288,32 @@ class JobPostViewSet(viewsets.ModelViewSet):
         serializer = JobPostSerializer(page if page else queryset, many=True)
         return self.get_paginated_response(serializer.data) if page else Response(serializer.data)
    
+    @action(detail=True, methods=['post'], permission_classes=[IsAuthenticated], url_path='close')
+    def close_job(self, request, pk=None):
+        job = self.get_object()
+
+        # 1. Only owner can close
+        if job.user != request.user:
+            return Response(
+                {"detail": "Only the job owner can close this job."},
+                status=status.HTTP_403_FORBIDDEN
+            )
+
+        # 2. Already closed?
+        if job.status == "closed":
+            return Response(
+                {"detail": "Job is already closed."},
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # 3. Mark as closed
+        job.status = "closed"
+        job.save()
+
+        return Response(
+            {"message": "Job closed successfully.", "job_id": job.id, "status": job.status},
+            status=status.HTTP_200_OK
+        )
 
 #Level 3
 class JobApplicantViewSet(viewsets.ReadOnlyModelViewSet):
