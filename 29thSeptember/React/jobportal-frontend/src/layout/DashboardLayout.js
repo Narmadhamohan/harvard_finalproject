@@ -18,7 +18,7 @@ export default function DashboardLayout() {
            <Link to="/view-Message" className="hover:text-yellow-300">Message</Link>
           <Link to="/home" className="hover:text-yellow-300">Home</Link>
           {/* Draw new links as like outline */}
-          <Link to="/looking-to-hire" className="hover:text-yellow-100">
+          <Link to="/looking-to-hire" style={{ fontSize: "10px" }}>
             Looking to Hire
           </Link>
         </nav>

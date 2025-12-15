@@ -25,7 +25,7 @@ export default function JobPostForm() {
     e.preventDefault();
 
     try {
-      const res = await axios.post(
+     /* const res = await axios.post(
         `${baseUrl}jobposts/`,
         job,
         {
@@ -34,7 +34,9 @@ export default function JobPostForm() {
             "Content-Type": "application/json",
           }
         }
-      );
+      ); */
+      const res = axiosClient.post("/api/jobposts/", job);
+
 
       alert("Job posted successfully!");
       console.log("Response:", res.data);

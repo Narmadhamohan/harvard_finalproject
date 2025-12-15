@@ -2,18 +2,20 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthProvider";
-import axios from "axios";
+// import axios from "axios";
+import axiosClient from "../../../api/axiosClient";
+
 
 export default function JobDetail() {
   const { id } = useParams();
   const [job, setJob] = useState(null);
-  const [alreadyApplied, setAlreadyApplied] = useState(false);
+  //const [alreadyApplied, setAlreadyApplied] = useState(false);
   const [message, setMessage] = useState("");
   const token = localStorage.getItem("accessToken");
   const navigate = useNavigate();
 
-  const [resumeFile, setResumeFile] = useState(null);
-  const [coverLetter, setCoverLetter] = useState("");
+  //const [resumeFile, setResumeFile] = useState(null);
+  //const [coverLetter, setCoverLetter] = useState("");
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
@@ -29,13 +31,15 @@ useEffect(() => {
 
 const closeJob = async () => {
   try {
-    const response = await axios.post(
+   /* const response = await axios.post(
       `http://127.0.0.1:8000/api/jobposts/${id}/close/`,
       {},
       {
         headers: { Authorization: `Bearer ${token}` }
       }
-    );
+    ); */
+     const response = axiosClient.post("/api/jobposts/${id}/close/");
+
 
     setJob(prev => ({ ...prev, status: "closed" }));
     setMessage("Job closed successfully!");
@@ -49,10 +53,13 @@ const closeJob = async () => {
 
   const fetchJobDetails = async () => {
     try {
-      const response = await axios.get(
+     /* const response = await axios.get(
         `http://127.0.0.1:8000/api/jobposts/${id}/`,
         { headers: { Authorization: `Bearer ${token}` } }
-      );
+      ); */
+
+      const response = await axiosClient.get(
+        `http://127.0.0.1:8000/api/jobposts/${id}/` ); 
       setJob(response.data);
       console.log("job detail: ",job);
     } catch (error) {
@@ -69,11 +76,19 @@ const closeJob = async () => {
 
     try {
 
-      const response = await axios.get(
+      /* const response = await axios.get(
         `http://127.0.0.1:8000/api/jobposts/${id}/applicants/`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      ); */
+      const response = await axiosClient.get(
+        `http://127.0.0.1:8000/api/jobposts/${id}/applicants/`,
+        {
+          headers: {
             "Content-Type": "multipart/form-data",
           },
         }
@@ -115,7 +130,7 @@ navigate(-1);
       {message && <p className="mt-3 text-blue-700">{message}</p>}
 
 {
-  job.user === user.id && job.status !="closed" && (
+  job.user === user.id && job.status !=="closed" && (
     <button onClick={closeJob}     className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
 >Close Job</button>
   )

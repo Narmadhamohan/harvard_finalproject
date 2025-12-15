@@ -4,7 +4,7 @@
 import axios from "axios";
 
 //const BASE_URL = process.env.REACT_APP_API_BASE || "/api/";
-const BASE_URL = "http://127.0.0.1:8000/api";
+const BASE_URL = "http://127.0.0.1:8000/api/";
 // create the axios instance used for normal API calls
 const axiosClient = axios.create({
   baseURL: BASE_URL,
@@ -91,7 +91,7 @@ axiosClient.interceptors.response.use(
 
     try {
       // direct call using axios to avoid interceptor recursion
-      const response = await axios.post(`${BASE_URL}/token/refresh/`, {
+      const response = await axios.post(`${BASE_URL}token/refresh/`, {
         refresh: refreshToken,
       });
 

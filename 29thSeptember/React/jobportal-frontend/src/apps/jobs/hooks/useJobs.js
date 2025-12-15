@@ -20,7 +20,8 @@ const fetchJobs = async(cursor = "" , search=initialSearch,url) => {
         setLoading(true);
         
 
-        const data =  await fetchJobsApi(cursor, search,url);
+        const {data,status} =  await fetchJobsApi(cursor, search,url);
+        console.log("Data: ",data);
             setJobs(data.results || []);
             setNextCursor(data.next_cursor);
             setPrevCursor(data.previous_cursor);

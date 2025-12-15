@@ -13,6 +13,7 @@
       location: "",
       salary_range: "",
       job_type: "",
+      gst_number: "",
       availability: "Full Day",
     });
 
@@ -33,14 +34,17 @@
     }
 
     const jobId = data.id;
-     navigate(`/jobs/${jobId}`);
+    // navigate(`/jobs/${jobId}`);
+    //path: "/:id",         // NOT "/jobs/:id"
+    navigate(`/posted-jobs/${jobId}`)
     }
 
 
 const handleDetailsClick = (jobId) => {
   // why not listref.current in 2nd arg?
 //sessionStorage.setItem("scrollpos", listref.current.scrollTop);
-  navigate(`/jobs/${jobId}`, {scrollStateMaintain:true});
+  //navigate(`/jobs/${jobId}`, {scrollStateMaintain:true});
+    navigate(`/posted-jobs/${jobId}`, {scrollStateMaintain:true})
 
 };
     return (
@@ -66,6 +70,18 @@ const handleDetailsClick = (jobId) => {
           <input name="salary_range" placeholder="Salary Range"
             className="w-full border p-2 rounded"
             onChange={handleChange} />
+         <div><b>*GST Number of the company:</b></div>
+          <input name="gst_number" placeholder="gst_number"
+            className="w-full border p-2 rounded"
+            onChange={handleChange} />
+        {/* <input
+  type="text"
+  name="gst_number"
+  value={form.gst_number}
+  onChange={handleChange}
+  className="input"
+/>
+ */}
 
         <div><b>*Job type:</b></div>
           <select name="job_type" className="w-full border p-2 rounded"

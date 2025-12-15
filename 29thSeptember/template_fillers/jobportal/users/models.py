@@ -56,6 +56,7 @@ class JobPost(models.Model):
     location = models.CharField(max_length=150, blank=True)
     posted_on = models.DateTimeField(auto_now_add=True)
     salary_range = models.CharField(max_length=100, blank=True)
+    gst_number = models.CharField(max_length=200, blank=True)
     job_type = models.CharField(max_length=100, blank=True, help_text="e.g., Full-time / Part-time / Freelance")
     availability = models.CharField(
         max_length=50,
