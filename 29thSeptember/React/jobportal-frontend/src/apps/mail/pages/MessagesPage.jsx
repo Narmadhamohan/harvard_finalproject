@@ -39,13 +39,9 @@ const normalize = (msg) => ({
   useEffect(() => {
     const load = async () => {
       try {
-        const inboxRes = await axios.get(`${API_BASE}/?box=inbox`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const inboxRes = await axiosClient.get(`${API_BASE}/?box=inbox`);
 
-        const sentRes = await axios.get(`${API_BASE}/?box=sent`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const sentRes = await axiosClient.get(`${API_BASE}/?box=sent`);
 
         const combinedInitial = [...inboxRes.data, ...sentRes.data];
         const combined = combinedInitial.map(normalize);

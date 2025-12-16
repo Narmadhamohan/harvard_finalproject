@@ -22,8 +22,6 @@ export default function Dashboard() {
     company_name: ""
   });
 
-console.log("AuthContext user =", user);
-    console.log("local loaded....",localStorage.getItem("user"));
 
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const loadData = async () => {
       location: profile.location || "",
       preferred_mode: profile.preferred_mode || "",
       description: profile.description || "",
-      phone: profile.Phone || "",
+      phone_number: profile.phone_number || "",
       company_name: profile.company_name || ""
     });
 
@@ -71,23 +69,23 @@ const loadData = async () => {
   };
 
   const validateData = () => {
-      if (!formData.description.trim()) {
+      if (!formData.description?.trim()) {
     alert("Description is required");
     return;
   }      if (!formData.skills.trim()) {
-    alert("Description is required");
+    alert("Skills are required");
     return;
   }      if (!formData.education.trim()) {
-    alert("Description is required");
+    alert("Education details are required");
     return;
   }  if (!formData.experience.trim()) {
-    alert("Description is required");
+    alert("Experience is required");
     return;
   }  if (!formData.location.trim()) {
-    alert("Description is required");
+    alert("Location is required");
     return;
-  }  if (!formData.phone_number.trim()) {
-    alert("Description is required");
+  }  if (!formData.phone_number?.trim()) {
+    alert("Phne number is required");
     return;
   }
   }
@@ -200,9 +198,11 @@ const loadData = async () => {
 
           <textarea
             className="input"
-            placeholder="Short Description"
+            placeholder="Short Description about your experience and projects"
             value={formData.description}
             onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+            maxLength={3000} rows={5}   style={{ width: "500px" }}
+
           />
                           <div><b>Current Company Name: </b></div>
 
@@ -220,10 +220,10 @@ const loadData = async () => {
             value={formData.location}
             onChange={(e) => setFormData({ ...formData, location: e.target.value })}
           />
-                          <div><b>Preferred Mode: </b></div>
+                          <div><b>Phone Number: </b></div>
             <input
             className="input"
-            placeholder="Location"
+            placeholder="Phone number"
             value={formData.phone_number}
             onChange={(e) => setFormData({ ...formData, phone_number: e.target.value })}
           />

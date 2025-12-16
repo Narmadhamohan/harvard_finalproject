@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function SelectApplicant() {
   const { jobId } = useParams();
+  const navigate = useNavigate();
   const token = localStorage.getItem("accessToken");
 
   const [applicants, setApplicants] = useState([]);
@@ -31,6 +32,8 @@ export default function SelectApplicant() {
   };
 
   return (
+
+    <div>
     <div className="flex max-w-6xl mx-auto mt-10 gap-6">
 
       {/* LEFT — LIST OF APPLICANTS */}
@@ -55,9 +58,18 @@ export default function SelectApplicant() {
 
           ))}
         </ul>
+ 
       </div>
 
+
+
+       
+
       {/* RIGHT — SHOW SELECTED APPLICANT DETAILS */}
+
+      <div>
+            {applicants.length !== 0 && <p>No applicants yet.</p> &&          
+
       <div className="w-2/3 bg-white p-6 rounded-xl shadow">
         {!selectedApplicant && (
           <p className="text-gray-600">Click an applicant to view details</p>
@@ -89,6 +101,16 @@ export default function SelectApplicant() {
         )}
       </div>
 
+      }</div>
+
+    </div>
+         <div>
+ 
+              <button name="Back to job lists" 
+              className="mt-6 bg-gray-200 px-4 py-2 rounded"
+              onClick={() => {navigate(-1)}}>Back to posted job</button>
+
+      </div>
     </div>
   );
 }

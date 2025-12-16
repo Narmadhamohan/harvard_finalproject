@@ -110,38 +110,49 @@ const closeJob = async () => {
   state: { scrollStateMaintain: true }
 }); // Correct usage*/
 sessionStorage.setItem("scrollStateMaintain",true);
-//navigate("/view-jobs", { state: { scrollStateMaintain: true } });
-navigate(-1);
+navigate("/view-jobs", { state: { scrollStateMaintain: true } });
+//navigate(-1);
   };
 
   return (
     <div>
-    <div>
-    <button name="View applicants" onClick={() => navigate(`/select-applicant/${id}`)}>View Applicants</button>
-    </div>
+   
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow">
       <h2 className="text-2xl font-bold mb-2">{job.title}</h2>
       <p><strong>Location:</strong> {job.location}</p>
       <p><strong>Job Type:</strong> {job.job_type}</p>
       <p><strong>Availability:</strong> {job.availability}</p>
       <p><strong>Salary:</strong> {job.salary_range}</p>
+     <p><strong>About Job:</strong></p>
       <p className="my-4">{job.description}</p>
    
       {message && <p className="mt-3 text-blue-700">{message}</p>}
 
-{
-  job.user === user.id && job.status !=="closed" && (
-    <button onClick={closeJob}     className="mt-4 bg-red-500 text-white px-4 py-2 rounded"
->Close Job</button>
-  )
-}
-      <button
-        onClick={handleBack}
-        className="mt-6 bg-gray-200 px-4 py-2 rounded"
-      >
-        Back to Job openings
-      </button>
-    </div>
-    </div>
+<div className="flex flex-wrap gap-4 mt-6">
+  {job.user === user.id && job.status !== "closed" && (
+    <button
+      onClick={closeJob}
+      className="bg-red-500 text-white px-4 py-2 rounded"
+    >
+      Close Job
+    </button>
+  )}
+
+  <button
+    onClick={handleBack}
+    className="bg-gray-200 px-4 py-2 rounded"
+  >
+    Back to Job openings
+  </button>
+
+  <button
+    onClick={() => navigate(`/select-applicant/${id}`)}
+    className="bg-gray-200 px-4 py-2 rounded"
+  >
+    View Applicants
+  </button>
+  </div>
+</div>
+</div>
   );
 }

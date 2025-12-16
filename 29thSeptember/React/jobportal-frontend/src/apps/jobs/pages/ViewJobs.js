@@ -115,6 +115,7 @@ sessionStorage.setItem("scrollpos", listref.current.scrollTop);
               <span>📍 {job.location}</span>
               <span>💼 {job.job_type}</span>
               <span>💰 {job.salary_range}</span>
+             {job.company_name && (<span> 📍 {job.company_name}</span>)}
               <span>Status: {job.status}</span>
             </div>
           </div>

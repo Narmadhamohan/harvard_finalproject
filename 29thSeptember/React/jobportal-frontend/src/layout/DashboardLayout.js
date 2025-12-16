@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../context/AuthProvider";
 
 export default function DashboardLayout() {
-  const { user, handleLogout } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
 
   return (
@@ -16,14 +16,14 @@ export default function DashboardLayout() {
           <Link to="/view-jobs" className="hover:text-yellow-300">View Jobs</Link>
           <Link to="/profiles/profiles-list" className="hover:text-yellow-300"> Connect to Experts</Link>
            <Link to="/view-Message" className="hover:text-yellow-300">Message</Link>
-          <Link to="/home" className="hover:text-yellow-300">Home</Link>
+        {/*  <Link to="/home" className="hover:text-yellow-300">Home</Link> */}
           {/* Draw new links as like outline */}
           <Link to="/looking-to-hire" style={{ fontSize: "10px" }}>
             Looking to Hire
           </Link>
         </nav>
         <button
-          onClick={handleLogout}
+          onClick={logout}
           className="mt-auto bg-red-500 hover:bg-red-600 text-white py-2 rounded"
         >
           Logout

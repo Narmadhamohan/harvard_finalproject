@@ -21,6 +21,20 @@ class ProfileSerializer(serializers.ModelSerializer):
        ## ✅ remove 'fields' option with exclude,    fields = '__all__'
         # exclude = ['user']  # 🔹 Do not expect 'user' field from JSON input
 
+class ProfileWriteSerializer(serializers.ModelSerializer):
+    user = serializers.HiddenField(
+        default=serializers.CurrentUserDefault()
+    )
+
+    class Meta:
+        model = Profile
+        fields = [
+            "user","full_name","location","skills","education","experience",
+            "phone_number",
+            "company_name",
+            "description",
+            "preferred_mode"
+        ]
 
 """class ResumeSerializer(serializers.ModelSerializer):
     class Meta:

@@ -100,6 +100,7 @@ navigate(-1);
       <p><strong>Job Type:</strong> {job.job_type}</p>
       <p><strong>Availability:</strong> {job.availability}</p>
       <p><strong>Salary:</strong> {job.salary_range}</p>
+      <p><strong>About Job:</strong></p>
       <p className="my-4">{job.description}</p>
 
       {job.status !== "active" || "draft" || "open" ? (

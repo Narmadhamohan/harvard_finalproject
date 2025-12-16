@@ -34,12 +34,13 @@ export default function ProfileDetail() {
 
   return (
     <div>
-      <h2>{profile.full_name}</h2>
+      <h2><b>{profile.full_name}</b></h2>
       <p><b>Location:</b> {profile.location}</p>
       <p><b>Skills:</b> {profile.skills}</p>
       <p><b>Experience:</b> {profile.experience}</p>
       <p><b>email:</b> {profile.user.email}</p>
-
+      <div>{profile.user.description
+        && <p><b>About the projects: </b>{profile.user.description}</p>}</div>
 
       {/* MESSAGE BUTTON */}
       <button
@@ -60,6 +61,12 @@ export default function ProfileDetail() {
           />
         </div>
       )}
+        <button
+    onClick={() => navigate(-1)}
+    className="bg-gray-200 px-4 py-2 rounded"
+  >
+    Back to All profiles
+  </button>
     </div>
   );
 }

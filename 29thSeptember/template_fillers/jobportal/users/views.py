@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework import viewsets, permissions, filters
 from rest_framework.response import Response
 from .models import User, Profile
-from .serializers import UserSerializer, ProfileSerializer, SignupSerializer, JobPostSerializer
+from .serializers import ProfileWriteSerializer, UserSerializer, ProfileSerializer, SignupSerializer, JobPostSerializer
 from rest_framework.decorators import action
 from django.contrib.auth import authenticate
 
@@ -185,15 +185,20 @@ class ProfileViewSet(viewsets.ModelViewSet):
     def submit_profile(self, request):
 
         profile, created = Profile.objects.get_or_create(user=request.user)
-
-        serializer = ProfileSerializer(profile, data=request.data, partial=True)
-
+        print("Raw request.body:", request.body)      # JSON string
+        print("request.data:", request.data)    # Parsed dictionary
+        serializer = ProfileWriteSerializer(profile, data=request.data, partial=True)
+        print("Data in serializer: ",request.data)
+        print("serializer initial_data:", serializer.initial_data)
+        print("serializer.is_valid()?:", serializer.is_valid())
+        print("serializer.validated_data:", serializer.validated_data)
         if serializer.is_valid():
-            serializer.save(user=request.user)
+           # serializer.save(user=request.user)
+            serializer.save()
             return Response({
                 "message": "Profile saved successfully",
                 "created": created,
-                "profile": serializer.data
+                "profile": ProfileSerializer(profile).data
             })
 
         return Response(serializer.errors, status=400)
