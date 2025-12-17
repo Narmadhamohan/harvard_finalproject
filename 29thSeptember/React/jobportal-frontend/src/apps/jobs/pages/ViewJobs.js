@@ -100,8 +100,7 @@ sessionStorage.setItem("scrollpos", listref.current.scrollTop);
           >
             <div className="flex justify-between items-center">
               <h3 className="text-lg font-semibold text-indigo-600">
-                {job.title}
-              </h3>
+                {job.title} {job.company_name && <span>company - {job.company_name}</span>  }           </h3>
               <span className="text-sm text-gray-500">
                 {new Date(job.posted_on).toLocaleDateString("en-IN")}
               </span>

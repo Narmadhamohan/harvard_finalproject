@@ -271,6 +271,10 @@ class JobPostViewSet(viewsets.ModelViewSet):
         user = request.user
         print("FILES RECEIVED:", request.FILES)
         print("DATA RECEIVED:", request.data)
+        print("users: job :", job)
+        print("applied user:  :", user)
+
+
         # prevent owner from applying to their own job
         if hasattr(job, 'user') and job.user == user:
             return Response({'detail': "Owner cannot apply to their own job."}, status=status.HTTP_400_BAD_REQUEST)

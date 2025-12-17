@@ -68,7 +68,7 @@ but to run only with click button, we use function call with searchbar
               className="cursor-pointer py-4 px-2 hover:bg-gray-100 transition"
             >
               <h3 className="text-lg font-semibold text-indigo-600">
-                {p.full_name}
+                {p.full_name} || {p.username}
               </h3>
               <p className="text-sm text-gray-600">📍 {p.location}</p>
               <span>📍 {p.skills}</span>

@@ -1,6 +1,7 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import axiosClient from "../../../api/axiosClient";
 
 export default function SelectApplicant() {
   const { jobId } = useParams();
@@ -17,12 +18,8 @@ export default function SelectApplicant() {
   const fetchApplicants = async () => {
     try {
         console.log( `http://127.0.0.1:8000/api/jobposts/${jobId}/applicants/`)
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/jobposts/${jobId}/applicants/`,
-        {
-          headers: { Authorization: `Bearer ${token}` }
-        }
-      );
+      const response = await axiosClient.get(
+        `/jobposts/${jobId}/applicants/` );
       console.log("select data")
       console.log(response.data);
       setApplicants(response.data.results);
@@ -68,7 +65,7 @@ export default function SelectApplicant() {
       {/* RIGHT — SHOW SELECTED APPLICANT DETAILS */}
 
       <div>
-            {applicants.length !== 0 && <p>No applicants yet.</p> &&          
+            {applicants.length == 0?( <p>No applicants yet.</p>) :(       
 
       <div className="w-2/3 bg-white p-6 rounded-xl shadow">
         {!selectedApplicant && (
@@ -87,9 +84,15 @@ export default function SelectApplicant() {
             <p><strong>Experience:</strong> {selectedApplicant.applicant.experience}</p>
 
             {/* Resume */}
-            {selectedApplicant.resume && (
+        {/*    {selectedApplicant && (
+  <pre className="text-xs bg-gray-100 p-2 mt-2">
+    {JSON.stringify(selectedApplicant, null, 2)}
+  </pre>
+)} */}
+
+            {selectedApplicant.resume?.file_url && (
               <a
-                href={selectedApplicant.resume}
+                href={selectedApplicant.resume.file_url}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded"
@@ -99,7 +102,7 @@ export default function SelectApplicant() {
             )}
           </div>
         )}
-      </div>
+      </div>)
 
       }</div>
 

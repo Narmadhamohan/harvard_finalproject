@@ -159,7 +159,8 @@ class JobApplicationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = JobApplication
-        fields = ['id', 'job', 'applicant', 'resume', 'resume_file', 'cover_letter', 'applied_on', 'status']
+        fields = ['id', 'job', 'applicant', 'resume', 
+                  'resume_file', 'cover_letter', 'applied_on', 'status']
         read_only_fields = ['job', 'applicant', 'applied_on', 'status']
 
     def create(self, validated_data):

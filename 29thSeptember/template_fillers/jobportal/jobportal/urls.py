@@ -31,6 +31,8 @@ from users.views import JobApplicantViewSet
 from communication.urls import router as communication_router
 from users.views import MyAppliedJobsViewSet
 
+from django.conf import settings
+from django.conf.urls.static import static
 
 #added for bulkview
 #from users.views import BulkUploadViewSet
@@ -72,3 +74,6 @@ urlpatterns = [
     path('api/bulk-upload/', BulkUserUploadAPIView.as_view(), name='bulk-upload'),
     path('jobposts/bulk_upload/', JobPostBulkUploadView.as_view(), name='jobpost-bulk-upload'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -30,7 +30,7 @@ export default function ManageJobs() {
 // 1️⃣ When component loads, fetch jobs
 useEffect(() => {
     let url = `${BASE_URL}jobposts/my-posts`;
-  fetchJobs("", "",url);
+  fetchJobs(url,"");
 }, []);
 
 // 2️⃣ When jobs are updated, THEN restore scroll

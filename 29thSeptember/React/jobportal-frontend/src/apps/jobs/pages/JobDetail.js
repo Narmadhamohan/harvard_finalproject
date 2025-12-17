@@ -98,10 +98,11 @@ navigate(-1);
       <p><strong>Job Type:</strong> {job.job_type}</p>
       <p><strong>Availability:</strong> {job.availability}</p>
       <p><strong>Salary:</strong> {job.salary_range}</p>
-      <p><strong>About Job:</strong></p>
+      <p><strong>About Job: {job.company_name && (<span> company:{job.company_name}
+        </span>)}</strong></p>
       <p className="my-4">{job.description}</p>
 
-      {job.status !== "active" || "draft" || "open" ? (
+      {(job.status !== "active") && (job.status !== "draft")&&(job.status !== "open") ? (
         <p className="text-red-600 font-semibold">This job is closed.</p>
       ) : alreadyApplied ? (
         <p className="text-green-600 font-semibold">
