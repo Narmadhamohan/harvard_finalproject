@@ -10,14 +10,14 @@ import axiosClient from "../../../api/axiosClient";
 
 const BASE_URL = "http://127.0.0.1:8000/api/";
 
-export const fetchJobsApi = async (cursor = "", search = "",url) => {
+export const fetchJobsApi = async (url=null, search = "") => {
   //const token = localStorage.getItem("accessToken");
   //if (!token) throw new Error("No token found");
   console.log("inside the page - 1: ",url);
 
-  url = `jobposts/`;
+  //url = `jobposts/`;
   const params = [];
-  if (cursor) params.push(`cursor=${cursor}`);
+  //if (cursor) params.push(`cursor=${cursor}`);
   if (search) params.push(`search=${encodeURIComponent(search)}`);
   if (params.length) url += `?${params.join("&")}`;
     console.log("inside the page - 2: ",url);

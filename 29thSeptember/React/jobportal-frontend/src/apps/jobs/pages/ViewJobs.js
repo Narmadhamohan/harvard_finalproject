@@ -30,7 +30,7 @@ export default function ViewJobs() {
 // 1️⃣ When component loads, fetch jobs
 useEffect(() => {
     let url = `${BASE_URL}jobposts/`;
-  fetchJobs("", "",url);
+  fetchJobs(url,"");
 }, []);
 
 // 2️⃣ When jobs are updated, THEN restore scroll
@@ -132,7 +132,7 @@ sessionStorage.setItem("scrollpos", listref.current.scrollTop);
 
       <button
         onClick={() =>
-          prevCursor && fetchJobs(prevCursor.split("cursor=")[1], searchTerm)
+          prevCursor && fetchJobs(prevCursor, searchTerm)
         }
         disabled={!prevCursor}
         className={`px-5 py-2 rounded-lg font-medium ${
@@ -146,7 +146,7 @@ sessionStorage.setItem("scrollpos", listref.current.scrollTop);
 
       <button
         onClick={() =>
-          nextCursor && fetchJobs(nextCursor.split("cursor=")[1], searchTerm)
+          nextCursor && fetchJobs(nextCursor, searchTerm)
         }
         disabled={!nextCursor}
         className={`px-5 py-2 rounded-lg font-medium ${

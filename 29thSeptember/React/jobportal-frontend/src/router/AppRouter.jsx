@@ -3,7 +3,7 @@ import { AuthProvider } from "../context/AuthProvider";
 import LoginForm from "../components/LoginForm";
 import ProtectedRoute from "./ProtectedRoute";
 import { dashboardParentRoute } from "../apps/dashboard/routes";
-
+import SignUpPage from "../pages/SignUpPage";
 export default function AppRouter() {
   return (
     <BrowserRouter>
@@ -12,7 +12,8 @@ export default function AppRouter() {
 
           {/* Public Routes */}
           <Route path="/login" element={<LoginForm />} />
-
+          
+          <Route path="/signup" element={<SignUpPage />} />
           {/* Protected Dashboard + Children */}
           <Route
             path="/"

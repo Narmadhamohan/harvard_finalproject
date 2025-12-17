@@ -13,14 +13,14 @@ const [jobs,setJobs] =useState([]);
 const [nextCursor,setNextCursor] =useState(null);
 const [prevCursor,setPrevCursor] =useState(null);
 const [loading,setLoading] = useState(false);
-const fetchJobs = async(cursor = "" , search=initialSearch,url) => {
+const fetchJobs = async(url, search=initialSearch) => {
     try{
   console.log("inside the page: hook");
 
         setLoading(true);
         
 
-        const {data,status} =  await fetchJobsApi(cursor, search,url);
+        const {data,status} =  await fetchJobsApi(url, search);
         console.log("Data: ",data);
             setJobs(data.results || []);
             setNextCursor(data.next_cursor);

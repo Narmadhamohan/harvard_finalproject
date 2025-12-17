@@ -135,7 +135,6 @@ const loadData = async () => {
     {/* PROFILE SECTION (Read + Edit) */}
     <div className="bg-white p-6 rounded shadow w-full max-w-2xl">
       <h1 className="text-xl font-bold mb-4">
-        Welcome {profile.full_name},
       </h1>
 
       {/* READ MODE */}

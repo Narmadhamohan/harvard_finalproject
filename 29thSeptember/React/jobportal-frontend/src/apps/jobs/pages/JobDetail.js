@@ -1,7 +1,8 @@
 // src/pages/JobDetail.js
 import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+//import axios from "axios";
+import axiosClient from "../../../api/axiosClient";
 
 export default function JobDetail() {
   const { id } = useParams();
@@ -21,9 +22,8 @@ export default function JobDetail() {
 
   const fetchJobDetails = async () => {
     try {
-      const response = await axios.get(
-        `http://127.0.0.1:8000/api/jobposts/${id}/`,
-        { headers: { Authorization: `Bearer ${token}` } }
+      const response = await axiosClient.get(
+        `/jobposts/${id}/`,
       );
       setJob(response.data);
     } catch (error) {
@@ -33,10 +33,8 @@ export default function JobDetail() {
 
   const checkIfApplied = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/applicants/",
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const response = await axiosClient.get(
+        "/applicants/"      );
       const appliedJobs = response.data.results || response.data;
       const applied = appliedJobs.some((app) => app.job === parseInt(id));
       setAlreadyApplied(applied);
@@ -60,12 +58,12 @@ export default function JobDetail() {
     formData.append("job", id);
 
     try {
-      const response = await axios.post(
-        `http://127.0.0.1:8000/api/jobposts/${id}/apply/`,
+      const response = await axiosClient.post(
+        `/jobposts/${id}/apply/`,
         formData,
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+        //    Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
