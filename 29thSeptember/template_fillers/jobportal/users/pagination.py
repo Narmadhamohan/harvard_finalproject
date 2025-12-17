@@ -18,6 +18,22 @@ class StandardResultsSetPagination(PageNumberPagination):
             'results': data
         })
 
+class ProfileListInfiniteScrollPagination(CursorPagination):
+    """
+    Cursor-based pagination (used for infinite scroll / load more).
+    Uses encoded cursor instead of page numbers.
+    """
+    page_size = 5
+    ordering = 'full_name'  # Sort newest first (you can change it per model)
+    cursor_query_param = 'cursor'
+
+    def get_paginated_response(self, data):
+        return Response({
+            'next_cursor': self.get_next_link(),
+            'previous_cursor': self.get_previous_link(),
+            'page_size': self.page_size,
+            'results': data
+        })
 
 class InfiniteScrollPagination(CursorPagination):
     """

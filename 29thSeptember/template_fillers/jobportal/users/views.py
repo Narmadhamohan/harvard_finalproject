@@ -24,7 +24,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 
 #below one for Task3  - Pagination
-from .pagination import StandardResultsSetPagination
+from .pagination import ProfileListInfiniteScrollPagination, StandardResultsSetPagination
 from .pagination import InfiniteScrollPagination
 #Level 3
 from .pagination import ApplicatntInfiniteScrollPagination
@@ -89,11 +89,13 @@ class ProfileViewSet(viewsets.ModelViewSet):
 
     # Exact field filtering
     filterset_fields = ['location']  # now you can filter by ?location=Bangalore
-    search_fields = ['skills', 'education']
+    search_fields = ['skills', 'education','full_name','location','experience']
     ordering_fields = ['experience', 'full_name']
     
     #Task 3: Pagination
-    pagination_class = StandardResultsSetPagination
+    #pagination_class = StandardResultsSetPagination
+    pagination_class = ProfileListInfiniteScrollPagination  # ✅ Modifying
+
     
     #Level 3:
     

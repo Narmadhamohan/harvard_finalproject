@@ -9,24 +9,25 @@ import { fetchProfiles } from "../api/ProfileApi";
 export const useProfiles = () =>{
     const [profiles,setProfiles] = useState([]);
     const [loading,setLoading] = useState(false);
-    const [nextcursor,setNextCursor] = useState(null);
-    const [prevcursor,setPrevCursor] = useState(null);
+    const [nextCursor,setNextCursor] = useState(null);
+    const [prevCursor,setPrevCursor] = useState(null);
 
 
-const fetchProfileList = async(cursor="", search="") =>{
+const fetchProfileList = async(cursor=null, search="") =>{
     try{
         setLoading(true);
         const data = await fetchProfiles(cursor,search);
         setProfiles(data.results || []);
+        console.log("cursoor: ",data.next_cursor);
         setNextCursor(data.next_cursor);
-        setPrevCursor(data.prev_cursor);
+        setPrevCursor(data.previous_cursor);
     }catch(error){
-
+        console.log(error);
     }finally{
         setLoading(false);
     }
 };
 
-return {profiles,prevcursor,nextcursor,loading,fetchProfileList};
+return {profiles,prevCursor,nextCursor,loading,fetchProfileList};
 
 }

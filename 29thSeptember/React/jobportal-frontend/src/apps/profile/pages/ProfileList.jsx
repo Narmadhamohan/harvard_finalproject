@@ -10,19 +10,14 @@
 // i understand forcursor -> disabled to make it nonclickable. classname for making it greyedout
 
 import { useEffect, useState } from "react";
-import { fetchProfilesList } from "../api/ProfileApi";
+import {useProfiles} from "../hooks/useProfiles";
+import { Navigate, useNavigate } from "react-router-dom";
+import SearchBar from "../../../components/SearchBar";
 
+export default function ProfileList() {
 
-const {searchTerm,setSearchTerm} = useState(null);
-useEffect(
-    fetchProfilesList("","")
-);
-/*useEffect(
-    fetchProfilesList("",searchTerm)
-, [searchTerm]);
-this runs for every searchterm value typing change. 
-but to run only with click button, we use function call with searchbar
-*/
+const navigate = useNavigate();  
+const [searchTerm,setSearchTerm] = useState(null);
 
   const {
     profiles,
@@ -32,9 +27,23 @@ but to run only with click button, we use function call with searchbar
     fetchProfileList,
   } = useProfiles();
 
+
+
+
+useEffect( ()=> {
+    fetchProfileList(null,"")
+},[]);
+/*useEffect(
+    fetchProfilesList("",searchTerm)
+, [searchTerm]);
+this runs for every searchterm value typing change. 
+but to run only with click button, we use function call with searchbar
+*/
+
+
  const handleSearch = (term) => {
     setSearchTerm(term);
-    fetchProfileList("", term);
+    fetchProfileList(null, term);
   };
 
   return (
@@ -62,14 +71,15 @@ but to run only with click button, we use function call with searchbar
                 {p.full_name}
               </h3>
               <p className="text-sm text-gray-600">📍 {p.location}</p>
+              <span>📍 {p.skills}</span>
+              <span>💼 {p.education}</span>
+              <span>💰 {p.experience}</span>
             </div>
-                )
-
-                )
+                ))
             }
             </div>
         ):(<p>No Profiles Found</p>)
-      };
+      }
 
 
 
@@ -80,8 +90,8 @@ but to run only with click button, we use function call with searchbar
         <button
           disabled={!prevCursor}
           onClick={() =>
-            prevCursor &&
-            fetchProfileList(prevCursor.split("cursor=")[1], searchTerm)
+            
+            fetchProfileList(prevCursor, searchTerm)
           }
           className={`px-5 py-2 rounded-lg font-medium ${
             prevCursor
@@ -90,14 +100,11 @@ but to run only with click button, we use function call with searchbar
           }`}
         >
           ⬅ Previous
-        </button>
-
+     
+       </button>
 <button
           disabled={!nextCursor}
-          onClick={() =>
-            nextCursor &&
-            fetchProfileList(nextCursor.split("cursor=")[1], searchTerm)
-          }
+        onClick={() => fetchProfileList(nextCursor, searchTerm)}
           className={`px-5 py-2 rounded-lg font-medium ${
             nextCursor
               ? "bg-indigo-500 text-white hover:bg-indigo-600"
@@ -111,3 +118,4 @@ but to run only with click button, we use function call with searchbar
 
       </div>
       );
+    }

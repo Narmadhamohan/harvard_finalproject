@@ -35,9 +35,18 @@ return config;
 // is using wait, always use module heading with async.
 // No fuction exists only with await. 
 // ---------------------------------------
-export const fetchProfiles = async(page = 1) => {
+export const fetchProfiles = async(url=null, search="") => {
   console.log("inside fetchapiprofiles");
-const response = await axiosClient.get(`profiles/`);
+    // 1️⃣ First load (no cursor)
+  let finalUrl = url ? url : "profiles/";
+    // 2️⃣ search param add (cursor இருந்தாலும் / இல்லாவிட்டாலும்)
+  if (search) {
+    const separator = finalUrl.includes("?") ? "&" : "?";
+    finalUrl = `${finalUrl}${separator}search=${encodeURIComponent(search)}`;
+  }
+
+  console.log("Final URL calling:", finalUrl);
+const response = await axiosClient.get(finalUrl);
   console.log("inside the fetchProfiles_ProfileApi: ",response);
 return response.data;
 };
