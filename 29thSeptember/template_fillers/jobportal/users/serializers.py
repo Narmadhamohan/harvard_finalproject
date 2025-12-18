@@ -45,6 +45,9 @@ class ProfileWriteSerializer(serializers.ModelSerializer):
 
 
 class JobPostSerializer(serializers.ModelSerializer):
+
+    already_applied = serializers.SerializerMethodField()
+
     class Meta:
         model = JobPost
         #remove field with exclude option
@@ -54,10 +57,25 @@ class JobPostSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'user', 'company_name', 'title', 'description',
             'location', 'posted_on', 'salary_range', 'job_type',
-            'availability', 'status','posted_on', 'gst_number'
+            'availability', 'status','posted_on', 'gst_number', "already_applied"
         ]
         read_only_fields = ['id','user', 'posted_on']
+    def get_already_applied(self, obj):
+        request = self.context.get("request")
 
+        # 1️⃣ Anonymous user
+        if not request or not request.user.is_authenticated:
+            return False
+
+        # 2️⃣ Owner should not be considered applied
+        if obj.user == request.user:
+            return False
+
+        # 3️⃣ Check JobApplication table
+        return JobApplication.objects.filter(
+            job=obj,
+            applicant=request.user
+        ).exists()
 
 
 """ class UserSerializer(serializers.ModelSerializer):
@@ -78,7 +96,24 @@ class JobPostSerializer(serializers.ModelSerializer):
         user.set_password(validated_data['password'])
         user.save()
         return user """
-        
+
+class JobPostDetailSerializer(serializers.ModelSerializer):
+    already_applied = serializers.SerializerMethodField()
+
+    class Meta:
+        model = JobPost
+        fields = "__all__"
+
+    def get_already_applied(self, obj):
+        user = self.context["request"].user
+        if user.is_anonymous:
+            return False
+        return JobApplication.objects.filter(
+            job=obj,
+            applicant=user
+        ).exists()
+
+
 class UserSerializer(serializers.ModelSerializer):
     
 #required=false, denotes, postmanclient signup, no need to pass this data    

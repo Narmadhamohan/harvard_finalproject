@@ -246,6 +246,7 @@ JobApplicationViewSet — handles viewing applicants per job (and filtering/sort
 class JobPostViewSet(viewsets.ModelViewSet):
     queryset = JobPost.objects.all().order_by('-posted_on')
     serializer_class = JobPostSerializer
+    
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
 
     #Task 2 - Filter and search
@@ -259,6 +260,10 @@ class JobPostViewSet(viewsets.ModelViewSet):
     #Level 3
     #Task 1:
     parser_classes = [JSONParser, MultiPartParser, FormParser]  # 👈 Allow file uploads
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
     
     #Level 4
     permission_classes = [IsAuthenticated]

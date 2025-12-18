@@ -17,7 +17,7 @@ export default function JobDetail() {
 
   useEffect(() => {
     fetchJobDetails();
-    checkIfApplied();
+//    checkIfApplied();
   },[]);
 
   const fetchJobDetails = async () => {
@@ -26,12 +26,14 @@ export default function JobDetail() {
         `/jobposts/${id}/`,
       );
       setJob(response.data);
+      setAlreadyApplied(response.data.already_applied);
+
     } catch (error) {
       console.error("Error fetching job details:", error);
     }
   };
 
-  const checkIfApplied = async () => {
+/*  const checkIfApplied = async () => {
     try {
       const response = await axiosClient.get(
         "/applicants/"      );
@@ -42,7 +44,7 @@ export default function JobDetail() {
       console.error("Error checking applied jobs:", error);
     }
   };
-
+*/
   // --------------------------
   // APPLY WITH FILE UPLOAD
   // --------------------------
